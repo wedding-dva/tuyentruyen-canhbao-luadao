@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tuyên truyền cảnh báo lừa đảo</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%23ff3b5c' d='M256 0L448 64V240C448 360 360 464 256 512C152 464 64 360 64 240V64L256 0Z'/><path fill='%23ffd166' d='M256 120L285 180L350 190L303 235L314 300L256 270L198 300L209 235L162 190L227 180L256 120Z'/></svg>">
     <meta name="description"
         content="Cảnh báo chiêu trò lừa đảo tinh vi: Giả danh cán bộ đất đai, dẫn nạn nhân từ VNeID sang chuyển tiền ứng dụng ngân hàng.">
     <!-- Google Fonts: Be Vietnam Pro (Chuẩn phông tiếng Việt số 1) -->
@@ -2346,6 +2347,16 @@
                 .replace(/^[.\s,;:!?-]+/, '') // Loại bỏ triệt để dấu chấm '.' hoặc ký tự đặc biệt ở ĐẦU chuỗi
                 .trim();
 
+            // 1. Ưu tiên phát trực tiếp qua Web Speech API native của trình duyệt (Không tốn Request mạng, KHÔNG BAO GIỜ bị CORB hay CORS)
+            if ('speechSynthesis' in window) {
+                let foundVoice = detectVietnameseVoice(currentVoiceGender);
+                if (foundVoice) {
+                    speakWebSpeechFallback(rawText);
+                    return;
+                }
+            }
+
+            // 2. Dự phòng chia đoạn đọc online cho thiết bị không có giọng đọc Tiếng Việt offline
             let chunks = splitTextIntoChunks(rawText, 140);
             playGoogleTTSChunks(chunks, 0, rawText);
         }
