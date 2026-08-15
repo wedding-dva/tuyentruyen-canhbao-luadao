@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuyên Truyền Cảnh Báo Lừa Đảo Giả Danh Cán Bộ Đất Đai & VNeID</title>
+    <meta name="description"
+        content="Cảnh báo chiêu trò lừa đảo tinh vi: Giả danh cán bộ đất đai, dẫn nạn nhân từ VNeID sang chuyển tiền ứng dụng ngân hàng.">
+    <!-- Google Fonts: Be Vietnam Pro (Chuẩn phông tiếng Việt số 1) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: #131b2e;
+            --bg-card-hover: #1c2742;
+            --accent-red: #ff3b5c;
+            --accent-red-glow: rgba(255, 59, 92, 0.35);
+            --accent-orange: #ff9f1c;
+            --accent-yellow: #ffd166;
+            --accent-blue: #3a86ff;
+            --accent-green: #06d6a0;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Khai báo @font-face cho phông chữ FS-PFBeauSansPro */
+        @font-face {
+            font-family: "FS-PFBeauSansPro";
+            src: local("FS-PFBeauSansPro"), local("FS PF BeauSansPro"), local("FS PFBeauSansPro"), local("PFBeauSansPro"), local("PF BeauSans Pro");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "FS-PFBeauSansPro";
+            src: local("FS-PFBeauSansPro-Bold"), local("FS PF BeauSansPro Bold"), local("FS PFBeauSansPro Bold"), local("PFBeauSansPro-Bold");
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "FS-PFBeauSansPro";
+            src: local("FS-PFBeauSansPro-Heavy"), local("FS-PFBeauSansPro-Black"), local("FS PF BeauSansPro Black"), local("PFBeauSansPro-Black");
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        /* Cấu hình phông chữ "FS-PFBeauSansPro" cả in hoa & in thường cho toàn bộ văn bản */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        div,
+        button,
+        kbd,
+        input,
+        select,
+        textarea,
+        .counter,
+        .slide,
+        .modal-content,
+        .slide-badge,
+        .cover-title,
+        .cover-content,
+        .btn-header,
+        .btn-start,
+        .info-card,
+        .alert-box {
+            font-family: "FS-PFBeauSansPro", "FS PF BeauSansPro", "PF BeauSans Pro", "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Khôi phục và đảm bảo hiển thị 100% Icon FontAwesome */
+        i,
+        .fa,
+        .fas,
+        .far,
+        .fab,
+        .fa-solid,
+        .fa-regular,
+        .fa-brands {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+        }
+
+        /* Custom Glassmorphism Scrollbar */
+        .slide::-webkit-scrollbar,
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .slide::-webkit-scrollbar-track,
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            margin: 8px 0;
+        }
+
+        .slide::-webkit-scrollbar-thumb,
+        .modal-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-red), var(--accent-orange));
+            border-radius: 10px;
+            border: 2px solid var(--bg-card);
+            box-shadow: 0 0 12px var(--accent-red-glow);
+        }
+
+        .slide::-webkit-scrollbar-thumb:hover,
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #ff5c77, #ffb347);
+        }
+
+        .slide,
+        .modal-content {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-red) rgba(255, 255, 255, 0.03);
+        }
+
+        html,
+        body {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "FS-PFBeauSansPro", "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(255, 59, 92, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(58, 134, 255, 0.1) 0%, transparent 40%);
+        }
+
+        /* Top Header Navigation */
+        .header {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            background: rgba(19, 27, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.3px;
+            color: var(--text-main);
+        }
+
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-red), #b91c1c);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 0 15px var(--accent-red-glow);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-header {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.84rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .btn-header span {
+            display: inline-block !important;
+            font-weight: 600 !important;
+        }
+
+        .btn-header:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Top Progress Bar */
+        .progress-bar-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 101;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 10%;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
+            transition: width 0.4s ease;
+            box-shadow: 0 0 10px var(--accent-red);
+        }
+
+        /* Presentation Container */
+        .slider-viewport {
+            flex: 1;
+            min-height: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Dynamic Faint Swipe Hand Gesture Overlay */
+        .swipe-hint-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            right: 18%;
+            transform: translateY(-50%);
+            z-index: 500;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            pointer-events: none;
+        }
+
+        .swipe-hint-container.show {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .swipe-hand-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        .swipe-trail-line {
+            position: absolute;
+            top: 6px;
+            left: 18px;
+            transform-origin: left center;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(255, 209, 102, 0.9), rgba(255, 159, 28, 0.4) 60%, transparent);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 159, 28, 0.5);
+            opacity: 0;
+            animation: long-trail-motion 2.2s 3 cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .swipe-hand-icon {
+            font-size: 3.2rem;
+            color: #ffd166;
+            filter: drop-shadow(0 0 10px rgba(255, 159, 28, 0.4));
+            opacity: 0.45;
+            position: relative;
+            z-index: 2;
+            animation: faint-swipe-motion 2.2s 3 cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes faint-swipe-motion {
+            0% {
+                transform: translateX(40px) scale(0.9);
+                opacity: 0;
+            }
+
+            20% {
+                transform: translateX(20px) scale(1.05);
+                opacity: 0.45;
+            }
+
+            75% {
+                transform: translateX(-80px) scale(1);
+                opacity: 0.45;
+            }
+
+            100% {
+                transform: translateX(-130px) scale(0.85);
+                opacity: 0;
+            }
+        }
+
+        @keyframes long-trail-motion {
+            0% {
+                width: 0px;
+                transform: translateX(40px);
+                opacity: 0;
+            }
+
+            20% {
+                width: 50px;
+                transform: translateX(20px);
+                opacity: 0.5;
+            }
+
+            75% {
+                width: 160px;
+                transform: translateX(-80px);
+                opacity: 0.5;
+            }
+
+            100% {
+                width: 220px;
+                transform: translateX(-130px);
+                opacity: 0;
+            }
+        }
+
+        .slides-wrapper {
+            width: 100%;
+            max-width: 960px;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.96) translateY(20px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            touch-action: pan-y;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Slide Content Styling */
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            width: fit-content;
+            margin-bottom: 12px;
+        }
+
+        .badge-danger {
+            background: rgba(255, 59, 92, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(255, 59, 92, 0.3);
+        }
+
+        .badge-warning {
+            background: rgba(255, 159, 28, 0.15);
+            color: var(--accent-orange);
+            border: 1px solid rgba(255, 159, 28, 0.3);
+        }
+
+        .badge-info {
+            background: rgba(58, 134, 255, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(58, 134, 255, 0.3);
+        }
+
+        .badge-success {
+            background: rgba(6, 214, 160, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(6, 214, 160, 0.3);
+        }
+
+        .slide-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-subtitle {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        /* Cover Slide Special Layout */
+        .cover-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 100%;
+            width: 100%;
+            min-width: 0;
+            text-align: center;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 10px;
+        }
+
+        /* Slide 1 Highlight Cards */
+        .slide1-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            width: 100%;
+            min-width: 0;
+            max-width: 780px;
+            margin: 14px 0 20px 0;
+        }
+
+        .slide1-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 0.96rem;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide1-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .slide1-card.card-warning {
+            background: rgba(255, 159, 28, 0.12);
+            color: #ffc97a;
+            border-color: rgba(255, 159, 28, 0.35);
+        }
+
+        .slide1-card.card-info {
+            background: rgba(58, 134, 255, 0.12);
+            color: #8bb4ff;
+            border-color: rgba(58, 134, 255, 0.35);
+        }
+
+        .slide1-card.card-danger {
+            background: rgba(255, 59, 92, 0.12);
+            color: #ff859b;
+            border-color: rgba(255, 59, 92, 0.35);
+        }
+
+        .slide1-card i {
+            font-size: 1.2rem;
+        }
+
+        .cover-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 30%, #ff758c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cover-icon {
+            font-size: 3.5rem;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 10px rgba(255, 59, 92, 0.4));
+            }
+
+            100% {
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 30px rgba(255, 59, 92, 0.8));
+            }
+        }
+
+        /* Grid / Timeline Cards */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .card-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Key Highlight Boxes */
+        .alert-box {
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            margin-top: 14px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .alert-box.danger {
+            background: rgba(255, 59, 92, 0.1);
+            border: 1px solid rgba(255, 59, 92, 0.3);
+            color: #ff859b;
+        }
+
+        .alert-box.warning {
+            background: rgba(255, 159, 28, 0.1);
+            border: 1px solid rgba(255, 159, 28, 0.3);
+            color: #ffc97a;
+        }
+
+        .alert-icon {
+            font-size: 1.4rem;
+            margin-top: 2px;
+        }
+
+        .alert-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .alert-content p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Step Diagrams */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+        }
+
+        .step-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--accent-orange);
+            flex-shrink: 0;
+        }
+
+        .step-text h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .step-text p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Bullet List styling */
+        .custom-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .custom-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .custom-list li i {
+            color: var(--accent-red);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        /* Bottom Controls Bar */
+        .navigation-bar {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 24px;
+            background: rgba(19, 27, 46, 0.9);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .counter {
+            font-family: 'Be Vietnam Pro', sans-serif !important;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .counter-current {
+            color: var(--accent-red);
+            font-size: 1.3rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-nav {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            box-shadow: 0 0 15px var(--accent-red-glow);
+            transform: scale(1.08);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-start {
+            background: linear-gradient(135deg, var(--accent-red), #dc2626);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px var(--accent-red-glow);
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+
+        .btn-start span {
+            display: inline-block !important;
+        }
+
+        .btn-start:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 15px 35px var(--accent-red-glow);
+        }
+
+        /* Dots Navigation */
+        .dots-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--accent-red);
+            width: 24px;
+            border-radius: 10px;
+        }
+
+        /* Modal Overview */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 14, 23, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 26px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 14px;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-close:hover {
+            color: var(--text-main);
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 14px;
+        }
+
+        .overview-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .overview-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-red);
+            transform: translateY(-2px);
+        }
+
+        .overview-item-num {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            margin-bottom: 4px;
+        }
+
+        .overview-item-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Keyboard Hints */
+        .keyboard-hint {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: monospace !important;
+            font-size: 0.75rem;
+        }
+
+        /* Mobile & Tablet Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 12px;
+                gap: 8px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .brand {
+                font-size: 0.92rem;
+                font-weight: 800;
+                letter-spacing: 0.3px;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .header-controls {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+                gap: 6px;
+            }
+
+            .btn-header {
+                width: 100%;
+                padding: 8px 6px;
+                font-size: 0.76rem;
+                justify-content: center;
+                text-align: center;
+                gap: 6px;
+                box-sizing: border-box;
+                border-radius: 12px;
+            }
+
+            .btn-header span {
+                display: inline-block !important;
+                white-space: nowrap;
+                font-size: 0.76rem;
+            }
+
+            .btn-start {
+                padding: 12px 18px;
+                font-size: 0.88rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .slider-viewport {
+                padding: 10px 6px;
+            }
+
+            .slide {
+                padding: 16px 14px;
+                border-radius: 16px;
+                touch-action: pan-y;
+            }
+
+            .cover-title {
+                font-size: 1.45rem;
+            }
+
+            .slide1-highlights {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                gap: 10px !important;
+                margin: 12px 0 16px 0 !important;
+            }
+
+            .slide1-card {
+                width: 100% !important;
+                padding: 12px 14px !important;
+                font-size: 0.92rem !important;
+                box-sizing: border-box !important;
+            }
+
+            .cover-icon {
+                font-size: 2.6rem;
+                margin-bottom: 12px;
+            }
+
+            .slide-title {
+                font-size: 1.25rem;
+                line-height: 1.3;
+            }
+
+            .swipe-hint-container {
+                display: flex !important;
+            }
+
+            .slide-subtitle {
+                font-size: 0.86rem;
+                margin-bottom: 14px;
+                line-height: 1.4;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .info-card {
+                padding: 12px 14px;
+                gap: 6px;
+            }
+
+            .card-title {
+                font-size: 0.92rem;
+            }
+
+            .card-desc {
+                font-size: 0.84rem;
+                line-height: 1.4;
+            }
+
+            .flow-step {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+
+            .step-text h5 {
+                font-size: 0.9rem;
+            }
+
+            .step-text p {
+                font-size: 0.82rem;
+            }
+
+            .custom-list li {
+                padding: 10px 12px;
+                font-size: 0.86rem;
+            }
+
+            .keyboard-hint {
+                display: none;
+            }
+
+            .navigation-bar {
+                padding: 8px 12px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 8px;
+            }
+
+            .btn-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 0.95rem;
+            }
+
+            .dots-container {
+                gap: 4px;
+            }
+
+            .dot {
+                width: 7px;
+                height: 7px;
+            }
+
+            .dot.active {
+                width: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand {
+                font-size: 0.86rem;
+            }
+
+            .btn-header {
+                font-size: 0.72rem;
+                padding: 7px 4px;
+            }
+
+            .btn-header span {
+                font-size: 0.72rem;
+            }
+
+            .cover-title {
+                font-size: 1.3rem;
+            }
+
+            .slide-title {
+                font-size: 1.15rem;
+            }
+
+            .navigation-bar {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Progress Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <span>TUYÊN TRUYỀN CẢNH BÁO LỪA ĐẢO</span>
+        </div>
+        <div class="header-controls">
+            <button class="btn-header" id="btnAudioToggle" title="Đọc giọng nói">
+                <i class="fa-solid fa-volume-high"></i>
+                <span id="audioText">Đọc slide</span>
+            </button>
+            <button class="btn-header" id="btnPoster" onclick="openPosterModal()" title="Poster Công An">
+                <i class="fa-solid fa-file-shield" style="color: var(--accent-green);"></i>
+                <span>Poster Công An</span>
+            </button>
+            <button class="btn-header" id="btnOverview">
+                <i class="fa-solid fa-grip"></i>
+                <span>Danh sách slide</span>
+            </button>
+            <button class="btn-header" id="btnShare">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Chia sẻ</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Viewport for Slides -->
+    <main class="slider-viewport" id="swipeArea">
+
+        <!-- Dynamic Faint Swipe Hand Gesture Overlay with Drag Trail Line -->
+        <div class="swipe-hint-container" id="swipeHint">
+            <div class="swipe-hand-wrapper">
+                <div class="swipe-trail-line"></div>
+                <i class="fa-solid fa-hand-pointer swipe-hand-icon"></i>
+            </div>
+        </div>
+
+        <div class="slides-wrapper">
+
+            <!-- SLIDE 1: COVER -->
+            <div class="slide active" data-index="1">
+                <div class="cover-content">
+                    <div class="cover-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div class="slide-badge badge-danger">
+                        <i class="fa-solid fa-bell"></i> Cảnh báo khẩn cấp
+                    </div>
+                    <h1 class="cover-title">CẢNH BÁO THỦ ĐOẠN LỪA ĐẢO GIẢ DANH CÁN BỘ ĐẤT ĐAI</h1>
+                    <p class="slide-subtitle">
+                        Thủ đoạn tinh vi: Dẫn dắt nạn nhân từng bước từ <strong>VNeID</strong> & <strong>Cổng Dịch Vụ
+                            Công</strong> sang <strong>Tài khoản Ngân Hàng</strong> để chiếm đoạt tiền.
+                    </p>
+                    <div class="slide1-highlights">
+                        <div class="slide1-card card-warning">
+                            <i class="fa-solid fa-user-lock"></i>
+                            <span>Che CCCD thao túng</span>
+                        </div>
+                        <div class="slide1-card card-info">
+                            <i class="fa-solid fa-qrcode"></i>
+                            <span>Mã QR giả liên kết</span>
+                        </div>
+                        <div class="slide1-card card-danger">
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+                            <span>Rút sạch tài khoản</span>
+                        </div>
+                    </div>
+                    <button class="btn-start" onclick="goToNextSlide()">
+                        <span>BẮT ĐẦU XEM BÀI HỌC</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: VÌ SAO NGƯỜI CẢNH GIÁC VẪN BỊ LỪA -->
+            <div class="slide" data-index="2">
+                <div class="slide-badge badge-warning">
+                    <i class="fa-solid fa-user-shield"></i> Đối tượng nạn nhân & Tâm lý
+                </div>
+                <h2 class="slide-title">Vì sao người cảnh giác vẫn có thể rơi vào bẫy?</h2>
+                <p class="slide-subtitle">
+                    Kịch bản này hướng tới những người lớn tuổi có dùng smartphone, biết chuyển khoản nhưng <strong>chưa
+                        nắm rõ các tính năng ngân hàng số & xác thực điện tử</strong>.
+                </p>
+                <div class="content-grid">
+                    <div class="info-card">
+                        <div class="card-icon" style="background: rgba(255, 59, 92, 0.15); color: var(--accent-red);">
+                            <i class="fa-solid fa-phone-slash"></i>
+                        </div>
+                        <div class="card-title">Bình thường rất cảnh giác</div>
+                        <div class="card-desc">Không nghe số lạ bất thường, biết từ chối các yêu cầu cài app lạ (APK)
+                            nguy hiểm.</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon" style="background: rgba(58, 134, 255, 0.15); color: var(--accent-blue);">
+                            <i class="fa-solid fa-sim-card"></i>
+                        </div>
+                        <div class="card-title">Tạo lòng tin bằng đầu số thật</div>
+                        <div class="card-desc">Kẻ lừa đảo dùng đầu số đẹp <strong>097 (Viettel)</strong> nói chuyện
+                            chính xác về thủ tục Sổ đỏ & Đất đai làm nạn nhân mất cảnh giác.</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon"
+                            style="background: rgba(255, 159, 28, 0.15); color: var(--accent-orange);">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                        </div>
+                        <div class="card-title">Điểm mù công nghệ</div>
+                        <div class="card-desc">Không phân biệt được đâu là "Xác thực danh tính" và đâu là "Giao dịch
+                            chuyển tiền ngân hàng".</div>
+                    </div>
+                </div>
+                <div class="alert-box warning">
+                    <i class="fa-solid fa-circle-exclamation alert-icon"></i>
+                    <div class="alert-content">
+                        <h4>Ghi nhớ quan trọng</h4>
+                        <p>Kẻ gian không còn bắt cài App lạ ngay nữa, mà dùng chính các trang chính thức để gây dựng
+                            niềm tin trước khi tung chiêu quyết định!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: BUỔI SÁNG - CÂU CHUYỆN SỔ ĐỎ VÀ VNeID -->
+            <div class="slide" data-index="3">
+                <div class="slide-badge badge-info">
+                    <i class="fa-solid fa-sun"></i> Kịch bản - Buổi sáng
+                </div>
+                <h2 class="slide-title">Buổi sáng: Bắt đầu bằng câu chuyện Tích hợp Sổ Đỏ</h2>
+                <p class="slide-subtitle">
+                    Kẻ gian đóng vai cán bộ hướng dẫn trước khi xuống UBND Phường để tránh mất thời gian chờ đợi.
+                </p>
+                <div class="flow-container">
+                    <div class="flow-step">
+                        <div class="step-num">1</div>
+                        <div class="step-text">
+                            <h5>Cuộc gọi từ số 097xxx Viettel</h5>
+                            <p>Thông báo hai vợ chồng cần mang Sổ đỏ xuống Phường để tích hợp vào tài khoản VNeID.</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">2</div>
+                        <div class="step-text">
+                            <h5>Cung cấp thông tin cán bộ phụ trách</h5>
+                            <p>Hắn chủ động cho số điện thoại một người tên "Kiên" và hẹn giờ làm việc, tạo cảm giác rất
+                                đúng quy trình hành chính.</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">3</div>
+                        <div class="step-text">
+                            <h5>Hai vợ chồng mất cảnh giác</h5>
+                            <p>Vì số Viettel quen thuộc + nội dung đất đai chính xác -> Nạn nhân tin rằng đây thực sự là
+                                người của cơ quan Nhà nước.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: BUỔI TRƯA - BẪY TRÊN CỔNG DỊCH VỤ CÔNG -->
+            <div class="slide" data-index="4">
+                <div class="slide-badge badge-info">
+                    <i class="fa-solid fa-clock"></i> Kịch bản - Buổi trưa
+                </div>
+                <h2 class="slide-title">Buổi trưa: Xây dựng lòng tin tuyệt đối bằng Cổng Dịch Vụ Công</h2>
+                <p class="slide-subtitle">
+                    Đối tượng yêu cầu kết bạn Zalo, gọi Video Call và hướng dẫn thao tác trực tiếp trên <strong>trang
+                        web chính thức của Chính phủ</strong>.
+                </p>
+                <div class="content-grid">
+                    <div class="info-card">
+                        <div class="card-icon" style="background: rgba(6, 214, 160, 0.15); color: var(--accent-green);">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div class="card-title">Cổng Dịch Vụ Công Quốc Gia</div>
+                        <div class="card-desc">Nạn nhân được vào đúng trang web thật (dichvucong.gov.vn). Kẻ gian hướng
+                            dẫn chuẩn xác từng nút bấm khiến nạn nhân <strong>hoàn toàn tin tưởng chuyên môn của
+                                hắn</strong>.</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon" style="background: rgba(255, 59, 92, 0.15); color: var(--accent-red);">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <div class="card-title">Gọi Video Zalo trực tiếp</div>
+                        <div class="card-desc">Hắn gọi video sang máy người chồng, bắt bật camera soi trực tiếp vào màn
+                            hình máy người vợ để chỉ đường dẫn lối từng bước.</div>
+                    </div>
+                </div>
+                <div class="alert-box danger">
+                    <i class="fa-solid fa-triangle-exclamation alert-icon"></i>
+                    <div class="alert-content">
+                        <h4>Bẫy tâm lý cực hiểm</h4>
+                        <p>Thao tác đúng trên trang chính thức làm người dân quên mất rằng: <strong>Cán bộ nhà nước
+                                KHÔNG BAO GIỜ gọi Video Zalo để bắt thao tác riêng qua điện thoại!</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: CHIÊU TRÒ NGUY HIỂM 1 - CHE CCCD MÀN HÌNH -->
+            <div class="slide" data-index="5">
+                <div class="slide-badge badge-danger">
+                    <i class="fa-solid fa-eye-slash"></i> Thủ đoạn nguy hại #1
+                </div>
+                <h2 class="slide-title">Chiêu trò độc hại: Yêu cầu đặt CCCD che giữa màn hình!</h2>
+                <p class="slide-subtitle">
+                    Một mẹo thao túng thị giác cực kỳ tinh vi để giấu đi thông tin giao dịch tài chính thật.
+                </p>
+                <div class="content-grid">
+                    <div class="info-card">
+                        <div class="card-title" style="color: var(--accent-red);"><i class="fa-solid fa-id-card"></i>
+                            Đặt CCCD nằm ngang giữa điện thoại</div>
+                        <div class="card-desc">Kẻ lừa đảo viện lý do "để xác thực danh tính VNeID và chụp hình ảnh thẻ",
+                            bảo nạn nhân đặt thẻ CCCD đè lên giữa màn hình.</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-title" style="color: var(--accent-orange);"><i class="fa-solid fa-mask"></i>
+                            Mục đích thực sự của hành vi này</div>
+                        <div class="card-desc">Thẻ CCCD đã <strong>CHE KHẤT SỐ TIỀN & THÔNG TIN NGƯỜI NHẬN</strong> đang
+                            hiển thị ở phần giữa màn hình ngân hàng!</div>
+                    </div>
+                </div>
+                <div class="alert-box danger" style="margin-top:20px;">
+                    <i class="fa-solid fa-ban alert-icon"></i>
+                    <div class="alert-content">
+                        <h4>Mắt không nhìn thấy -> Tay vẫn bấm nút</h4>
+                        <p>Nạn nhân đinh ninh mình đang làm bước "Xác thực danh tính VNeID", nhưng thực chất màn hình
+                            phía sau thẻ CCCD chính là màn hình LỆNH CHUYỂN TIỀN!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: CHIÊU TRÒ NGUY HIỂM 2 - MÃ QR MÀU XANH & THAO TÚNG ZALO -->
+            <div class="slide" data-index="6">
+                <div class="slide-badge badge-danger">
+                    <i class="fa-solid fa-qrcode"></i> Thủ đoạn nguy hại #2
+                </div>
+                <h2 class="slide-title">Mã QR "Tài Nguyên Môi Trường" giả & Thao túng qua Zalo</h2>
+                <p class="slide-subtitle">
+                    Kẻ gian nhắn tin "Xin cấp mã số thuế", gửi ảnh Mã QR màu xanh giả mạo Cơ quan Nhà nước và gọi Video
+                    Call chỉ dẫn.
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; align-items: center; margin-bottom: 16px;">
+                    <!-- Evidence Screenshot Card -->
+                    <div
+                        style="background: rgba(19, 27, 46, 0.85); border: 1px solid var(--accent-red); border-radius: 16px; padding: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                        <div
+                            style="font-size: 0.82rem; font-weight: 700; color: var(--accent-red); margin-bottom: 8px;">
+                            <i class="fa-solid fa-camera"></i> BẰNG CHỨNG THỰC TẾ TIN NHẮN ZALO LỪA ĐẢO
+                        </div>
+                        <div style="position: relative; cursor: pointer;" onclick="openImageZoomModal('./assets/zalo_chat_lua_dao.jpg', 'Bằng chứng thực tế tin nhắn Zalo lừa đảo từ số giả danh cán bộ')">
+                            <img src="./assets/zalo_chat_lua_dao.jpg" alt="Bằng chứng tin nhắn Zalo lừa đảo gửi Mã QR"
+                                style="max-width: 100%; max-height: 260px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); object-fit: contain; box-shadow: 0 8px 20px rgba(0,0,0,0.5);" />
+                            <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); color: #fff; padding: 5px 11px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; backdrop-filter: blur(4px);">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> Bấm để phóng to
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Explanation Flow -->
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div class="info-card" style="padding: 12px 14px;">
+                            <div class="card-title" style="color: var(--accent-orange); font-size: 0.95rem;">
+                                <i class="fa-solid fa-comments"></i> 1. Nhắn tin với chiêu bài "Cấp mã số thuế"
+                            </div>
+                            <div class="card-desc">Đối tượng tự xưng là cán bộ, yêu cầu kết bạn Zalo, nhắn tin trao đổi
+                                thông tin đất đai và gọi Video Call kéo dài hơn 10 phút.</div>
+                        </div>
+                        <div class="info-card" style="padding: 12px 14px;">
+                            <div class="card-title" style="color: var(--accent-yellow); font-size: 0.95rem;">
+                                <i class="fa-solid fa-file-image"></i> 2. Gửi ảnh Mã QR màu xanh đóng dấu giả
+                            </div>
+                            <div class="card-desc">Tạo bức ảnh có dòng chữ <em>"TÀI NGUYÊN VÀ MÔI TRƯỜNG - MÃ LIÊN KẾT
+                                    KHO BẠC NHÀ NƯỚC"</em> để lừa người dùng lưu ảnh về điện thoại.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 7: MẪU QR LỪA ĐẢO & CƠ CHẾ TỰ ĐỘNG ĐIỀN TIỀN -->
+            <div class="slide" data-index="7">
+                <div class="slide-badge badge-danger">
+                    <i class="fa-solid fa-skull-crossbones"></i> Điểm chốt hạ bẫy lừa
+                </div>
+                <h2 class="slide-title">Mẫu Mã QR Lừa Đảo: Tự động điền số tiền + Che màn hình CCCD!</h2>
+                <p class="slide-subtitle">
+                    Phân tích chi tiết mánh khóe QR tự động cài số tiền chuyển đi kết hợp với việc dùng CCCD che mắt nạn
+                    nhân.
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: center; margin-bottom: 14px;">
+
+                    <!-- Zoomed Fake QR Evidence Card -->
+                    <div
+                        style="background: rgba(19, 27, 46, 0.9); border: 2px solid var(--accent-red); border-radius: 16px; padding: 14px; text-align: center; box-shadow: 0 0 20px rgba(255, 59, 92, 0.35);">
+                        <div
+                            style="font-size: 0.85rem; font-weight: 800; color: #ff859b; margin-bottom: 8px; text-transform: uppercase;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> MẪU MÃ QR LỪA ĐẢO THỰC TẾ
+                        </div>
+                        <div style="position: relative; cursor: pointer;" onclick="openImageZoomModal('./assets/qr_lua_dao_tnmt.jpg', 'Mẫu Mã QR Lừa Đảo: TÀI NGUYÊN VÀ MÔI TRƯỜNG - MÃ LIÊN KẾT KHO BẠC NHÀ NƯỚC')">
+                            <img src="./assets/qr_lua_dao_tnmt.jpg" alt="Mẫu mã QR lừa đảo Tài nguyên và Môi trường"
+                                style="max-width: 100%; max-height: 250px; border-radius: 10px; border: 2px solid var(--accent-green); object-fit: contain; box-shadow: 0 6px 16px rgba(0,0,0,0.6);" />
+                            <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); color: #fff; padding: 5px 11px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; backdrop-filter: blur(4px);">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> Bấm để phóng to
+                            </div>
+                        </div>
+                        <div
+                            style="font-size: 0.78rem; color: var(--accent-yellow); margin-top: 6px; font-weight: 700;">
+                            "MÃ LIÊN KẾT KHO BẠC NHÀ NƯỚC" (GIẢ MẠO)
+                        </div>
+                    </div>
+
+                    <!-- Double Trap Mechanism Explanation -->
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div
+                            style="background: rgba(255, 59, 92, 0.12); border: 1px solid var(--accent-red); padding: 12px 14px; border-radius: 12px;">
+                            <h5
+                                style="color: var(--accent-red); font-size: 0.95rem; font-weight: 800; margin-bottom: 4px;">
+                                <i class="fa-solid fa-bolt"></i> 1. Mã QR tự động điền sẵn số tiền lớn
+                            </h5>
+                            <p style="font-size: 0.85rem; color: var(--text-main); line-height: 1.4;">
+                                Khi ấn <strong>Quét QR từ thư viện ảnh</strong> trong App Ngân hàng, Mã QR này
+                                <strong>tự động điền số tài khoản thụ hưởng & tự động điền số tiền khủng cần
+                                    rút</strong> mà người dùng không hề hay biết.
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: rgba(255, 159, 28, 0.12); border: 1px solid var(--accent-orange); padding: 12px 14px; border-radius: 12px;">
+                            <h5
+                                style="color: var(--accent-orange); font-size: 0.95rem; font-weight: 800; margin-bottom: 4px;">
+                                <i class="fa-solid fa-eye-slash"></i> 2. Thẻ CCCD che mất số tiền chuyển khoản
+                            </h5>
+                            <p style="font-size: 0.85rem; color: var(--text-main); line-height: 1.4;">
+                                Trong lúc đó, nạn nhân đang nghe theo lời kẻ gian <strong>đặt thẻ CCCD che giữa màn
+                                    hình</strong>, nên <strong>HOÀN TOÀN KHÔNG THẤY SỐ TIỀN CHUYỂN KHOẢN KHỦNG NẰM DƯỚI
+                                    THẺ!</strong>
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: rgba(6, 214, 160, 0.12); border: 1px solid var(--accent-green); padding: 12px 14px; border-radius: 12px;">
+                            <h5
+                                style="color: var(--accent-green); font-size: 0.95rem; font-weight: 800; margin-bottom: 4px;">
+                                <i class="fa-solid fa-shield-cat"></i> 3. Quét khuôn mặt + OTP = RÚT SẠCH TIỀN!
+                            </h5>
+                            <p style="font-size: 0.85rem; color: var(--text-main); line-height: 1.4;">
+                                Nạn nhân tưởng đang "xác thực danh tính VNeID", chỉ thấy nút bấm xác thực $\rightarrow$
+                                Quét khuôn mặt + OTP $\rightarrow$ Tiền bị rút sạch bách trong vài giây!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 8: TẤN CÔNG TIẾP SANG TÀI KHOẢN NGƯỜI CHỒNG -->
+            <div class="slide" data-index="8">
+                <div class="slide-badge badge-warning">
+                    <i class="fa-solid fa-user-group"></i> Tâm lý hối thúc
+                </div>
+                <h2 class="slide-title">Tấn công tiếp sang máy người chồng & Tâm lý hối thúc</h2>
+                <p class="slide-subtitle">
+                    Kẻ lừa đảo không dừng lại khi mới rút tiền của 1 người. Hắn lập tức quay sang người thân đi cùng!
+                </p>
+                <div class="content-grid">
+                    <div class="info-card">
+                        <div class="card-icon" style="background: rgba(255, 59, 92, 0.15); color: var(--accent-red);">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div class="card-title">Chuyển sang máy người chồng</div>
+                        <div class="card-desc">Ngay khi rút xong máy vợ, hắn yêu cầu gọi sang máy chồng và bắt đầu làm
+                            các bước y hệt đến tận bước nhập OTP.</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon"
+                            style="background: rgba(255, 159, 28, 0.15); color: var(--accent-orange);">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <div class="card-title">Liên tục hối thúc, dồn dập</div>
+                        <div class="card-desc">Ở đầu dây bên kia, kẻ lừa đảo thúc giục liên hồi không để nạn nhân có 1
+                            giây tĩnh trí kiểm tra số dư.</div>
+                    </div>
+                </div>
+                <div class="alert-box warning">
+                    <i class="fa-solid fa-shield-cat alert-icon"></i>
+                    <div class="alert-content">
+                        <h4>May mắn ngừng kịp thời</h4>
+                        <p>Rất may lúc đó người vợ sinh nghi, mở lại ứng dụng ngân hàng thấy mất sạch tiền nên lập tức
+                            hô dừng lại, cứu được tài khoản của người chồng!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 9: POSTER TUYÊN TRUYỀN CHÍNH THỨC CỦA CƠ QUAN CÔNG AN -->
+            <div class="slide" data-index="9">
+                <div class="slide-badge badge-success">
+                    <i class="fa-solid fa-shield-halved"></i> Tư liệu chính thống
+                </div>
+                <h2 class="slide-title">Poster Tuyên Truyền Chính Thức Từ Cơ Quan Công An</h2>
+                <p class="slide-subtitle">
+                    Tài liệu tuyên truyền chính thức khuyến cáo người dân về chiêu trò lừa đảo <strong>"Cập nhật sổ đỏ
+                        vào VNeID"</strong>.
+                </p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; align-items: center; margin-bottom: 16px;">
+                    <!-- Interactive Poster Display Card -->
+                    <div
+                        style="background: rgba(19, 27, 46, 0.9); border: 2px solid var(--accent-green); border-radius: 16px; padding: 12px; text-align: center; box-shadow: 0 0 25px rgba(6, 214, 160, 0.25);">
+                        <div
+                            style="font-size: 0.85rem; font-weight: 800; color: var(--accent-green); margin-bottom: 8px; text-transform: uppercase;">
+                            <i class="fa-solid fa-file-shield"></i> KHUYẾN CÁO CƠ QUAN CÔNG AN
+                        </div>
+                        <div style="position: relative; cursor: pointer;" onclick="openPosterModal()">
+                            <img src="./assets/poster_cong_an.jpg"
+                                alt="Poster Tuyên truyền Cảnh báo Lừa đảo của Công an"
+                                style="max-width: 100%; max-height: 310px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); object-fit: contain; box-shadow: 0 8px 20px rgba(0,0,0,0.6);" />
+                            <div
+                                style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.75); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; backdrop-filter: blur(4px);">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> Bấm để phóng to
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlighted Points from Official Poster -->
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div
+                            style="background: rgba(255, 59, 92, 0.12); border: 1px solid var(--accent-red); padding: 12px 14px; border-radius: 12px;">
+                            <h5
+                                style="color: var(--accent-red); font-size: 0.92rem; font-weight: 800; margin-bottom: 4px;">
+                                <i class="fa-solid fa-hand"></i> CHỈ 1 LẦN BẤM NHẦM LINK = MẤT CẢ TÀI KHOẢN!
+                            </h5>
+                            <p style="font-size: 0.84rem; color: var(--text-main); line-height: 1.4;">
+                                Tuyệt đối KHÔNG bấm đường link lạ gửi qua Zalo/SMS, KHÔNG đọc OTP, KHÔNG chia sẻ màn
+                                hình và KHÔNG cho phép điều khiển từ xa.
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: rgba(255, 209, 102, 0.12); border: 1px solid var(--accent-yellow); padding: 12px 14px; border-radius: 12px;">
+                            <h5
+                                style="color: var(--accent-yellow); font-size: 0.92rem; font-weight: 800; margin-bottom: 4px;">
+                                <i class="fa-solid fa-bullhorn"></i> ĐẶC BIỆT LƯU Ý TỪ CÔNG AN:
+                            </h5>
+                            <p style="font-size: 0.84rem; color: var(--text-main); line-height: 1.4;">
+                                Cơ quan Công an <strong>KHÔNG yêu cầu người dân cung cấp OTP, mật khẩu hay chuyển tiền
+                                    qua điện thoại</strong> để "cập nhật sổ đỏ vào VNeID".
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: rgba(6, 214, 160, 0.12); border: 1px solid var(--accent-green); padding: 12px 14px; border-radius: 12px;">
+                            <h5
+                                style="color: var(--accent-green); font-size: 0.92rem; font-weight: 800; margin-bottom: 4px;">
+                                <i class="fa-solid fa-phone-volume"></i> 3 BƯỚC NẾU ĐÃ LỠ BẤM LINK LẠ:
+                            </h5>
+                            <p style="font-size: 0.84rem; color: var(--text-main); line-height: 1.4;">
+                                1. Ngắt kết nối Internet / Tắt nguồn ngay.<br>
+                                2. Liên hệ Ngân hàng khóa khẩn cấp tài khoản.<br>
+                                3. Trình báo ngay Cơ quan Công an gần nhất.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 10: 6 NGUYÊN TẮC TUYỆT ĐỐI KHÔNG -->
+            <div class="slide" data-index="10">
+                <div class="slide-badge badge-danger">
+                    <i class="fa-solid fa-ban"></i> 6 Điều Sinh Tồn
+                </div>
+                <h2 class="slide-title">6 Điều TUYỆT ĐỐI KHÔNG được làm</h2>
+                <p class="slide-subtitle">Hãy dặn dò người thân, bố mẹ, ông bà khắc ghi 6 quy tắc này:</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                    <div class="info-card" style="padding: 14px;">
+                        <div style="color: var(--accent-red); font-weight: 700; font-size: 0.95rem;"><i
+                                class="fa-solid fa-1"></i> KHÔNG tin đầu số điện thoại</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Đầu số 097, 098... không chứng minh
+                            đó là cán bộ Nhà nước.</div>
+                    </div>
+                    <div class="info-card" style="padding: 14px;">
+                        <div style="color: var(--accent-red); font-weight: 700; font-size: 0.95rem;"><i
+                                class="fa-solid fa-2"></i> KHÔNG làm thủ tục qua Zalo</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Cơ quan công an, đất đai KHÔNG hướng
+                            dẫn giấy tờ qua Video Call Zalo.</div>
+                    </div>
+                    <div class="info-card" style="padding: 14px;">
+                        <div style="color: var(--accent-red); font-weight: 700; font-size: 0.95rem;"><i
+                                class="fa-solid fa-3"></i> KHÔNG cho soi màn hình ngân hàng</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Không bao giờ thao tác App ngân hàng
+                            theo sự chỉ đạo của người lạ.</div>
+                    </div>
+                    <div class="info-card" style="padding: 14px;">
+                        <div style="color: var(--accent-red); font-weight: 700; font-size: 0.95rem;"><i
+                                class="fa-solid fa-4"></i> KHÔNG nhập OTP khi nghi ngờ</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Tuyệt đối không nhập OTP khi không rõ
+                            bản chất giao dịch.</div>
+                    </div>
+                    <div class="info-card" style="padding: 14px;">
+                        <div style="color: var(--accent-red); font-weight: 700; font-size: 0.95rem;"><i
+                                class="fa-solid fa-5"></i> KHÔNG quét mã QR người lạ gửi</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Không lưu ảnh QR gửi qua tin nhắn để
+                            quét trong ngân hàng.</div>
+                    </div>
+                    <div class="info-card" style="padding: 14px;">
+                        <div style="color: var(--accent-red); font-weight: 700; font-size: 0.95rem;"><i
+                                class="fa-solid fa-6"></i> KHÔNG lấy CCCD che màn hình</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Đây là mánh khóe giấu số tiền chuyển
+                            đi.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 11: QUY TẮC VÀNG KHẨN CẤP -->
+            <div class="slide" data-index="11">
+                <div class="cover-content">
+                    <div class="slide-badge badge-success" style="margin-bottom:12px;">
+                        <i class="fa-solid fa-key"></i> QUY TẮC VÀNG KIM CỔ
+                    </div>
+                    <h2 class="cover-title"
+                        style="font-size: 1.7rem; color: #f8fafc; max-width: 900px; margin: 0 auto 14px auto; line-height: 1.3; font-weight: 700;">
+                        KHI NGƯỜI LẠ ĐÃ ĐƯA BẠN SANG ỨNG DỤNG NGÂN HÀNG VÀ BẮT ĐẦU CÁC BƯỚC:<br>
+                        <span style="color: var(--accent-yellow); font-size: 1.5rem; font-weight: 800;">QUÉT QR → KHUÔN
+                            MẶT → NHẬP OTP</span>
+                    </h2>
+
+                    <!-- Ultra Prominent Warning Banner -->
+                    <div style="
+                        background: linear-gradient(135deg, #b91c1c, #ff3b5c);
+                        color: #ffffff;
+                        padding: 16px 28px;
+                        border-radius: 20px;
+                        font-size: 2.2rem;
+                        font-weight: 900;
+                        letter-spacing: 1px;
+                        text-align: center;
+                        box-shadow: 0 0 35px rgba(255, 59, 92, 0.7), 0 0 10px rgba(255, 209, 102, 0.5);
+                        border: 3px solid #ffd166;
+                        margin: 12px auto 20px auto;
+                        text-shadow: 0 3px 6px rgba(0,0,0,0.5);
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 14px;
+                        animation: pulse-glow 1.8s infinite alternate;
+                    ">
+                        <i class="fa-solid fa-hand-paper" style="color: #ffd166; font-size: 2.4rem;"></i>
+                        <span>HÃY DỪNG NGAY LẬP TỨC!</span>
+                        <i class="fa-solid fa-hand-paper" style="color: #ffd166; font-size: 2.4rem;"></i>
+                    </div>
+                    <p class="slide-subtitle" style="margin-bottom: 20px; font-size: 1rem;">
+                        <strong>Đất đai không cần bạn chuyển tiền qua điện thoại.</strong> VNeID hay Mã số thuế không
+                        phải là lý do để một người lạ yêu cầu bạn mở App ngân hàng rồi nhập OTP. Nếu gặp tình huống này,
+                        hãy dũng cảm <strong>DỪNG CUỘC GỌI</strong> và đến trực tiếp Công an hoặc UBND Phường!
+                    </p>
+
+                    <div
+                        style="background: rgba(255,59,92,0.15); border:1px solid var(--accent-red); padding: 18px; border-radius: 16px; width: 100%; text-align: left; margin-bottom: 20px;">
+                        <h4 style="color: var(--accent-red); margin-bottom: 8px;"><i class="fa-solid fa-heart"></i> HÃY
+                            BẢO VỆ BỐ MẸ VÀ NGƯỜI THÂN!</h4>
+                        <p style="font-size: 0.92rem; color: var(--text-main); line-height: 1.5;">
+                            Một cuộc gọi, một mã QR và một lần nhập OTP có thể làm toàn bộ tiền tích góp cả đời biến mất
+                            chỉ trong vài phút. Hãy chia sẻ trang cảnh báo này cho gia đình ngay hôm nay!
+                        </p>
+                    </div>
+
+                    <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; width: 100%;">
+                        <button class="btn-start"
+                            style="background: linear-gradient(135deg, var(--accent-blue), #2563eb);"
+                            onclick="copySummaryText()">
+                            <i class="fa-solid fa-copy"></i>
+                            <span>SAO CHÉP LỜI CẢNH BÁO (GỬI ZALO)</span>
+                        </button>
+                        <button class="btn-start"
+                            style="background: rgba(255,255,255,0.1); border: 1px solid var(--border-color);"
+                            onclick="goToSlide(12)">
+                            <span>XEM THÔNG TIN KẺ LỪA ĐẢO THỰC TẾ</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 12: THÔNG TIN ĐỐI TƯỢNG LỪA ĐẢO THỰC TẾ -->
+            <div class="slide" data-index="12">
+                <div class="cover-content">
+                    <div class="slide-badge badge-danger" style="margin-bottom:12px;">
+                        <i class="fa-solid fa-triangle-exclamation"></i> TỐ CÁO ĐỐI TƯỢNG LỪA ĐẢO THỰC TẾ
+                    </div>
+                    <h2 class="slide-title"
+                        style="font-size: 1.8rem; color: #ff5c77; margin-bottom: 8px; font-weight: 800;">
+                        CẢNH BÁO ĐỐI TƯỢNG GIẢ DANH CÁN BỘ
+                    </h2>
+                    <p class="slide-subtitle" style="margin-bottom: 20px;">
+                        Đây là thông tin thực tế của kẻ lừa đảo trong vụ việc. Hãy nâng cao cảnh giác và cảnh báo ngay
+                        cho người thân:
+                    </p>
+
+                    <!-- Profile Info Card -->
+                    <div
+                        style="background: rgba(19, 27, 46, 0.9); border: 2px solid var(--accent-red); border-radius: 20px; padding: 22px; width: 100%; max-width: 760px; margin: 0 auto 20px auto; box-shadow: 0 0 25px rgba(255, 59, 92, 0.35);">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 18px;">
+
+                            <div
+                                style="background: rgba(255, 59, 92, 0.12); border: 1px solid rgba(255, 59, 92, 0.35); padding: 16px 14px; border-radius: 14px; text-align: center;">
+                                <div
+                                    style="color: var(--text-muted); font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">
+                                    <i class="fa-solid fa-user-slash" style="color: var(--accent-red);"></i> Họ và Tên
+                                    Đối Tượng
+                                </div>
+                                <div
+                                    style="color: #ffffff; font-size: 1.3rem; font-weight: 800; letter-spacing: 0.5px;">
+                                    VO THANH TIN
+                                </div>
+                                <div
+                                    style="font-size: 0.8rem; color: var(--accent-red); margin-top: 2px; font-weight: 600;">
+                                    (VÕ THÀNH TÍN)</div>
+                            </div>
+
+                            <div
+                                style="background: rgba(255, 159, 28, 0.12); border: 1px solid rgba(255, 159, 28, 0.35); padding: 16px 14px; border-radius: 14px; text-align: center;">
+                                <div
+                                    style="color: var(--text-muted); font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">
+                                    <i class="fa-solid fa-phone-slash" style="color: var(--accent-orange);"></i> Số Điện
+                                    Thoại Lừa Đảo
+                                </div>
+                                <div
+                                    style="color: var(--accent-yellow); font-size: 1.3rem; font-weight: 800; letter-spacing: 1px;">
+                                    0973 962 947
+                                </div>
+                                <div
+                                    style="font-size: 0.8rem; color: var(--accent-orange); margin-top: 2px; font-weight: 600;">
+                                    (Giả danh Cán bộ Đất đai)</div>
+                            </div>
+
+                            <div
+                                style="background: rgba(58, 134, 255, 0.12); border: 1px solid rgba(58, 134, 255, 0.35); padding: 16px 14px; border-radius: 14px; text-align: center;">
+                                <div
+                                    style="color: var(--text-muted); font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">
+                                    <i class="fa-solid fa-credit-card" style="color: var(--accent-blue);"></i> Tài Khoản
+                                    Ngân Hàng
+                                </div>
+                                <div
+                                    style="color: #8bb4ff; font-size: 1.25rem; font-weight: 800; letter-spacing: 0.5px;">
+                                    0568747674
+                                </div>
+                                <div style="font-size: 0.8rem; color: #8bb4ff; margin-top: 2px; font-weight: 700;">Ngân
+                                    hàng VPBank</div>
+                            </div>
+
+                        </div>
+
+                        <div
+                            style="background: rgba(255, 59, 92, 0.2); border-left: 4px solid var(--accent-red); padding: 14px 16px; border-radius: 12px; text-align: left;">
+                            <div style="color: #ff859b; font-weight: 800; font-size: 0.95rem; margin-bottom: 4px;">
+                                <i class="fa-solid fa-shield-cat"></i> KHUYẾN CÁO TỐ CÁO KHẨN CẤP:
+                            </div>
+                            <div style="color: var(--text-main); font-size: 0.88rem; line-height: 1.5;">
+                                Tuyệt đối <strong>KHÔNG nghe máy</strong>, <strong>KHÔNG kết bạn Zalo</strong> và
+                                <strong>KHÔNG chuyển bất kỳ khoản tiền nào</strong> đến số điện thoại và tài khoản ngân
+                                hàng trên! Nếu phát hiện đối tượng liên hệ, hãy báo ngay cho Công an địa phương hoặc Cục
+                                An toàn thông tin.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; width: 100%;">
+                        <button class="btn-start"
+                            style="background: linear-gradient(135deg, var(--accent-red), #b91c1c);"
+                            onclick="copyScammerInfo()">
+                            <i class="fa-solid fa-copy"></i>
+                            <span>SAO CHÉP THÔNG TIN KẺ LỪA ĐẢO</span>
+                        </button>
+                        <button class="btn-start"
+                            style="background: rgba(255,255,255,0.1); border: 1px solid var(--border-color);"
+                            onclick="goToSlide(1)">
+                            <i class="fa-solid fa-rotate-left"></i>
+                            <span>XEM LẠI TỪ ĐẦU</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <footer class="navigation-bar">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="counter">
+                <span class="counter-current" id="currentSlideNum">01</span> / <span id="totalSlideNum">12</span>
+            </div>
+            <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-yellow); background: rgba(255, 209, 102, 0.15); border: 1px solid rgba(255, 209, 102, 0.3); padding: 3px 10px; border-radius: 12px;">
+                By DVA
+            </div>
+        </div>
+
+        <div class="dots-container" id="dotsContainer">
+            <!-- Dynamic dots -->
+        </div>
+
+        <div class="nav-buttons">
+            <div class="keyboard-hint">
+                <kbd>←</kbd> <kbd>→</kbd> Chuyển slide
+            </div>
+            <button class="btn-nav" id="btnPrev" title="Slide trước">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="btn-nav" id="btnNext" title="Slide tiếp theo">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Overview Modal -->
+    <div class="modal-overlay" id="modalOverview">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-list-check" style="color: var(--accent-red); margin-right: 8px;"></i>
+                    Tuyên truyền cảnh báo lừa đảo (12 Slide)
+                </div>
+                <button class="btn-close" id="btnCloseModal">&times;</button>
+            </div>
+            <div class="overview-grid" id="overviewGrid">
+                <!-- Overview Items generated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Poster Fullscreen Lightbox Modal -->
+    <div class="modal-overlay" id="modalPoster" onclick="closePosterModal(event)">
+        <div style="max-width: 90vw; max-height: 90vh; position: relative; text-align: center;">
+            <button class="btn-close"
+                style="position: absolute; top: -15px; right: -15px; background: var(--accent-red); color: #fff; width: 38px; height: 38px; border-radius: 50%; border: 2px solid #fff; font-size: 1.3rem; cursor: pointer; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.5);"
+                onclick="closePosterModal()">&times;</button>
+            <img src="./assets/poster_cong_an.jpg" alt="Poster Công An Cảnh Báo Lừa Đảo VNeID"
+                style="max-width: 100%; max-height: 85vh; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 2px solid var(--accent-yellow);" />
+        </div>
+    </div>
+
+    <!-- General Image Fullscreen Lightbox Zoom Modal -->
+    <div class="modal-overlay" id="modalImageZoom" onclick="closeImageZoomModal(event)">
+        <div style="max-width: 92vw; max-height: 92vh; position: relative; text-align: center;">
+            <button class="btn-close"
+                style="position: absolute; top: -15px; right: -15px; background: var(--accent-red); color: #fff; width: 38px; height: 38px; border-radius: 50%; border: 2px solid #fff; font-size: 1.3rem; cursor: pointer; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.5);"
+                onclick="closeImageZoomModal()">&times;</button>
+            <img id="zoomedImageSrc" src="" alt="Bằng chứng phóng to"
+                style="max-width: 100%; max-height: 80vh; border-radius: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.85); border: 2px solid var(--accent-red); object-fit: contain;" />
+            <div id="zoomedImageCaption" style="margin-top: 10px; color: var(--accent-yellow); font-weight: 700; font-size: 0.95rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8);"></div>
+        </div>
+    </div>
+
+    <!-- Audio Speech & Slide Logic Script -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlideIndex = 0;
+        let isAudioPlaying = false;
+        let synth = window.speechSynthesis;
+        let speechUtterance = null;
+
+        const currentSlideNumEl = document.getElementById('currentSlideNum');
+        const totalSlideNumEl = document.getElementById('totalSlideNum');
+        const progressBarEl = document.getElementById('progressBar');
+        const dotsContainerEl = document.getElementById('dotsContainer');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const modalOverview = document.getElementById('modalOverview');
+        const btnOverview = document.getElementById('btnOverview');
+        const btnCloseModal = document.getElementById('btnCloseModal');
+        const overviewGrid = document.getElementById('overviewGrid');
+        const btnAudioToggle = document.getElementById('btnAudioToggle');
+        const audioText = document.getElementById('audioText');
+        const btnShare = document.getElementById('btnShare');
+
+        const slideTitles = [
+            "Trang Chủ & Cảnh Báo Khẩn Cấp",
+            "Vì Sao Người Cảnh Giác Vẫn Bị Lừa?",
+            "Kịch Bản Giả Danh Cán Bộ Đất Đai (Đầu Số 097)",
+            "Thủ Đoạn Tận Dụng VNeID & Cổng DVC Quốc Gia",
+            "Chiêu Trò Thao Túng Qua Video Call Zalo",
+            "Mẫu QR 'Tài Nguyên Môi Trường' & Thao Túng Zalo",
+            "Bẫy Mã QR Tự Động Điền Tiền + Che Màn Hình CCCD",
+            "Bản Chất Kịch Bản Chiếm Đoạt Tài Sản Tinh Vi",
+            "Poster Tuyên Truyền Chính Thức Từ Cơ Quan Công An",
+            "6 Quy Tắc Vàng Khắc Ghi Để Không Bị Lừa",
+            "HÃY DỪNG NGAY LẬP TỨC! (Quy Tắc Vàng Kim Cổ)",
+            "Tố Cáo Kẻ Lừa Đảo Thực Tế (VO THANH TIN - VPBank)"
+        ];
+
+        function openPosterModal() {
+            const modalPoster = document.getElementById('modalPoster');
+            if (modalPoster) modalPoster.classList.add('active');
+        }
+
+        function closePosterModal(e) {
+            if (!e || e.target === document.getElementById('modalPoster') || (e.target && e.target.classList.contains('btn-close'))) {
+                const modalPoster = document.getElementById('modalPoster');
+                if (modalPoster) modalPoster.classList.remove('active');
+            }
+        }
+
+        function openImageZoomModal(imgSrc, captionText) {
+            const modal = document.getElementById('modalImageZoom');
+            const img = document.getElementById('zoomedImageSrc');
+            const caption = document.getElementById('zoomedImageCaption');
+            if (modal && img) {
+                img.src = imgSrc;
+                if (caption) caption.textContent = captionText || 'Hình ảnh bằng chứng thực tế';
+                modal.classList.add('active');
+            }
+        }
+
+        function closeImageZoomModal(e) {
+            if (!e || e.target === document.getElementById('modalImageZoom') || (e.target && e.target.classList.contains('btn-close'))) {
+                const modal = document.getElementById('modalImageZoom');
+                if (modal) modal.classList.remove('active');
+            }
+        }
+
+        totalSlideNumEl.textContent = String(totalSlides).padStart(2, '0');
+
+        // Init Dots & Overview Grid
+        function initNav() {
+            dotsContainerEl.innerHTML = '';
+            overviewGrid.innerHTML = '';
+
+            slides.forEach((slide, index) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index + 1));
+                dotsContainerEl.appendChild(dot);
+
+                const titleText = slideTitles[index] || `Slide ${index + 1}`;
+
+                const item = document.createElement('div');
+                item.className = 'overview-item';
+                item.innerHTML = `
+                    <div class="overview-item-num">SLIDE ${String(index + 1).padStart(2, '0')}</div>
+                    <div class="overview-item-title">${titleText}</div>
+                `;
+                item.addEventListener('click', () => {
+                    goToSlide(index + 1);
+                    closeModal();
+                });
+                overviewGrid.appendChild(item);
+            });
+        }
+
+        // Inactivity Timer for Swipe Hint Overlay (Tự động đếm 45 giây đứng yên đọc)
+        let swipeHintTimer = null;
+        let swipeHintHideTimeout = null;
+        const swipeHintEl = document.getElementById('swipeHint');
+
+        function triggerSwipeHintAnimation() {
+            if (!swipeHintEl) return;
+            const icon = swipeHintEl.querySelector('.swipe-hand-icon');
+            const trail = swipeHintEl.querySelector('.swipe-trail-line');
+            if (icon) {
+                icon.style.animation = 'none';
+                void icon.offsetWidth;
+                icon.style.animation = 'faint-swipe-motion 2.2s 3 cubic-bezier(0.4, 0, 0.2, 1) forwards';
+            }
+            if (trail) {
+                trail.style.animation = 'none';
+                void trail.offsetWidth;
+                trail.style.animation = 'long-trail-motion 2.2s 3 cubic-bezier(0.4, 0, 0.2, 1) forwards';
+            }
+            swipeHintEl.classList.add('show');
+            swipeHintHideTimeout = setTimeout(() => {
+                hideSwipeHint();
+            }, 7000);
+        }
+
+        function resetSwipeHintTimer() {
+            hideSwipeHint();
+            clearTimeout(swipeHintTimer);
+            clearTimeout(swipeHintHideTimeout);
+            // Kích hoạt khi đứng yên xem slide đúng 15 giây
+            if (currentSlideIndex < totalSlides - 1) {
+                swipeHintTimer = setTimeout(() => {
+                    triggerSwipeHintAnimation();
+                }, 15000);
+            }
+        }
+
+        function hideSwipeHint() {
+            if (swipeHintEl) swipeHintEl.classList.remove('show');
+            clearTimeout(swipeHintHideTimeout);
+        }
+
+        function updateSlideUI() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlideIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            currentSlideNumEl.textContent = String(currentSlideIndex + 1).padStart(2, '0');
+            const progressPct = ((currentSlideIndex + 1) / totalSlides) * 100;
+            progressBarEl.style.width = `${progressPct}%`;
+
+            // Dynamic Browser Tab Title Update
+            document.title = `[Slide ${String(currentSlideIndex + 1).padStart(2, '0')}/${totalSlides}] ${slideTitles[currentSlideIndex] || 'Cảnh Báo Lừa Đảo VNeID'}`;
+
+            const dots = dotsContainerEl.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+
+            btnPrev.disabled = currentSlideIndex === 0;
+            btnNext.disabled = currentSlideIndex === totalSlides - 1;
+
+            resetSwipeHintTimer();
+
+            if (isAudioPlaying) {
+                speakCurrentSlide();
+            }
+        }
+
+        function goToSlide(slideNum) {
+            if (slideNum < 1 || slideNum > totalSlides) return;
+            currentSlideIndex = slideNum - 1;
+            updateSlideUI();
+        }
+
+        function goToNextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                updateSlideUI();
+            }
+        }
+
+        function goToPrevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlideUI();
+            }
+        }
+
+        btnNext.addEventListener('click', goToNextSlide);
+        btnPrev.addEventListener('click', goToPrevSlide);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                goToNextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                goToPrevSlide();
+            } else if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Touch Drag & Swipe Gesture Logic for Mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchDeltaX = 0;
+        let isSwipingHorizontal = false;
+        const swipeArea = document.getElementById('swipeArea');
+
+        swipeArea.addEventListener('touchstart', (e) => {
+            hideSwipeHint();
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchDeltaX = 0;
+            isSwipingHorizontal = false;
+        }, { passive: true });
+
+        swipeArea.addEventListener('touchmove', (e) => {
+            if (!touchStartX) return;
+            let currentX = e.touches[0].clientX;
+            let currentY = e.touches[0].clientY;
+            touchDeltaX = currentX - touchStartX;
+            let touchDeltaY = currentY - touchStartY;
+
+            if (!isSwipingHorizontal) {
+                if (Math.abs(touchDeltaX) > Math.abs(touchDeltaY) && Math.abs(touchDeltaX) > 10) {
+                    isSwipingHorizontal = true;
+                }
+            }
+
+            if (isSwipingHorizontal) {
+                const activeSlide = slides[currentSlideIndex];
+                if (activeSlide) {
+                    activeSlide.style.transform = `translateX(${touchDeltaX * 0.35}px) scale(0.98)`;
+                    activeSlide.style.transition = 'none';
+                }
+            }
+        }, { passive: true });
+
+        swipeArea.addEventListener('touchend', () => {
+            const activeSlide = slides[currentSlideIndex];
+            if (activeSlide) {
+                activeSlide.style.transform = '';
+                activeSlide.style.transition = '';
+            }
+
+            if (isSwipingHorizontal) {
+                const swipeThreshold = 35;
+                if (touchDeltaX < -swipeThreshold) {
+                    goToNextSlide();
+                } else if (touchDeltaX > swipeThreshold) {
+                    goToPrevSlide();
+                }
+            }
+            touchStartX = 0;
+            touchStartY = 0;
+            touchDeltaX = 0;
+            isSwipingHorizontal = false;
+        }, { passive: true });
+
+        btnOverview.addEventListener('click', () => modalOverview.classList.add('active'));
+        btnCloseModal.addEventListener('click', closeModal);
+        modalOverview.addEventListener('click', (e) => {
+            if (e.target === modalOverview) closeModal();
+        });
+        function closeModal() {
+            modalOverview.classList.remove('active');
+        }
+
+        // Text-to-Speech Dual Engine (Google Native Voice + Web Speech Fallback)
+        let currentAudioPlayer = null;
+        let vietnameseVoice = null;
+
+        function detectVietnameseVoice() {
+            if (!('speechSynthesis' in window)) return null;
+            const voices = synth.getVoices();
+            return voices.find(v =>
+                v.lang === 'vi-VN' ||
+                v.lang === 'vi_VN' ||
+                v.lang.startsWith('vi') ||
+                v.name.toLowerCase().includes('vietnamese') ||
+                v.name.toLowerCase().includes('tiếng việt') ||
+                v.name.toLowerCase().includes('hoaimy') ||
+                v.name.toLowerCase().includes('namminh')
+            );
+        }
+
+        if ('speechSynthesis' in window && speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = () => {
+                vietnameseVoice = detectVietnameseVoice();
+            };
+        }
+
+        function stopAudio() {
+            isAudioPlaying = false;
+            audioText.textContent = 'Đọc slide';
+            btnAudioToggle.style.color = '';
+            if (currentAudioPlayer) {
+                currentAudioPlayer.pause();
+                currentAudioPlayer = null;
+            }
+            if ('speechSynthesis' in window) {
+                synth.cancel();
+            }
+        }
+
+        function splitTextIntoChunks(text, maxLen) {
+            let parts = text.split(/(?<=[.!?])\s+/);
+            let chunks = [];
+            let current = '';
+
+            parts.forEach(p => {
+                if ((current + ' ' + p).length <= maxLen) {
+                    current = (current + ' ' + p).trim();
+                } else {
+                    if (current) chunks.push(current);
+                    current = p;
+                }
+            });
+            if (current) chunks.push(current);
+            return chunks;
+        }
+
+        function playGoogleTTSChunks(chunks, index, fullTextFallback) {
+            if (!isAudioPlaying) return;
+            if (index >= chunks.length) {
+                stopAudio();
+                return;
+            }
+
+            let chunk = chunks[index];
+            let googleUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodeURIComponent(chunk)}`;
+
+            currentAudioPlayer = new Audio(googleUrl);
+
+            currentAudioPlayer.play().then(() => {
+                currentAudioPlayer.onended = () => {
+                    if (isAudioPlaying) playGoogleTTSChunks(chunks, index + 1, fullTextFallback);
+                };
+            }).catch(err => {
+                console.warn('Không thể kết nối giọng online, dùng Web Speech API:', err);
+                speakWebSpeechFallback(fullTextFallback);
+            });
+        }
+
+        function speakWebSpeechFallback(text) {
+            if (!('speechSynthesis' in window)) return;
+            synth.cancel();
+
+            let foundVoice = detectVietnameseVoice();
+
+            speechUtterance = new SpeechSynthesisUtterance(text);
+            speechUtterance.lang = 'vi-VN';
+
+            if (foundVoice) {
+                speechUtterance.voice = foundVoice;
+            } else {
+                console.warn('Lưu ý: Máy chưa cài gói Microsoft HoaiMy (Tiếng Việt). Giọng mặc định sẽ được phát.');
+            }
+
+            speechUtterance.rate = 0.9;
+            speechUtterance.onended = () => stopAudio();
+            speechUtterance.onerror = () => stopAudio();
+
+            synth.speak(speechUtterance);
+        }
+
+        function speakCurrentSlide() {
+            stopAudio();
+            isAudioPlaying = true;
+            audioText.textContent = 'Đang đọc...';
+            btnAudioToggle.style.color = 'var(--accent-red)';
+
+            const activeSlide = slides[currentSlideIndex];
+
+            let clone = activeSlide.cloneNode(true);
+            clone.querySelectorAll('button, .keyboard-hint, .slide-badge').forEach(el => el.remove());
+
+            let rawText = clone.innerText
+                .replace(/\n+/g, '. ')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            let chunks = splitTextIntoChunks(rawText, 140);
+            playGoogleTTSChunks(chunks, 0, rawText);
+        }
+
+        btnAudioToggle.addEventListener('click', () => {
+            if (isAudioPlaying) {
+                stopAudio();
+            } else {
+                speakCurrentSlide();
+            }
+        });
+
+        // Copy Warning Summary Text
+        function copySummaryText() {
+            const warningSummary =
+                `🚨 CẢNH BÁO THỦ ĐOẠN LỪA ĐẢO GIẢ DANH CÁN BỘ ĐẤT ĐAI & VNeID 🚨
+
+Cảnh báo kịch bản lừa đảo rút sạch tiền ngân hàng vô cùng tinh vi:
+1. Kẻ gian gọi số 097 (Viettel) hẹn tích hợp Sổ đỏ vào VNeID.
+2. Kết bạn Zalo, gọi Video Call chỉ dẫn thao tác trên Cổng Dịch Vụ Công Quốc Gia để tạo lòng tin tuyệt đối.
+3. Yêu cầu đặt thẻ CCCD CHE GIỮA MÀN HÌNH điện thoại để ẨN SỐ TIỀN & THÔNG TIN CHUYỂN TIỀN.
+4. Gửi MÃ QR MÀU XANH qua Zalo bảo quét trong App ngân hàng dưới danh nghĩa "Xác thực/Liên kết mã số thuế".
+5. Quét QR + Quét khuôn mặt + OTP -> RÚT SẠCH TIỀN TÀI KHOẢN NGÂN HÀNG!
+
+⚠️ QUY TẮC VÀNG NẰM LÒNG:
+KHI NGƯỜI LẠ ĐÃ ĐƯA BẠN SANG ỨNG DỤNG NGÂN HÀNG VÀ BẮT ĐẦU CÁC BƯỚC QUÉT QR → KHUÔN MẶT → NHẬP OTP — HÃY DỪNG NGAY LẬP TỨC!
+Đất đai hay VNeID không cần bạn chuyển tiền theo hướng dẫn của người lạ qua điện thoại.
+Hãy gửi thông điệp này cho Bố Mẹ, Ông Bà và Người thân cùng cảnh giác!`;
+
+            navigator.clipboard.writeText(warningSummary).then(() => {
+                alert('Đã sao chép nội dung cảnh báo! Bạn có thể dán (Paste) vào Zalo / Facebook để gửi cho người thân.');
+            }).catch(err => {
+                console.error('Lỗi sao chép:', err);
+            });
+        }
+
+        // Copy Real Scammer Profile Info
+        function copyScammerInfo() {
+            const scammerText =
+                `⚠️ CẢNH BÁO THÔNG TIN ĐỐI TƯỢNG LỪA ĐẢO GIẢ DANH CÁN BỘ ĐẤT ĐAI:
+
+👤 Họ và Tên đối tượng: VO THANH TIN (VÕ THÀNH TÍN)
+📞 Số điện thoại lừa đảo: 0973 962 947
+💳 Tài khoản ngân hàng VPBank: 0568747674
+
+🔥 Thủ đoạn: Giả danh Cán bộ Đất đai / VNeID gọi điện hướng dẫn làm thủ tục, dụ nạn nhân mở App ngân hàng, che màn hình và quét mã QR rút sạch tiền.
+⚠️ Tuyệt đối KHÔNG nghe máy, KHÔNG chuyển tiền, KHÔNG làm theo! Hãy chia sẻ để bảo vệ mọi người!`;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(scammerText).then(() => {
+                    alert('✅ Đã sao chép thông tin kẻ lừa đảo! Bạn có thể dán (Paste) để chia sẻ cảnh báo qua Zalo / Facebook.');
+                }).catch(() => fallbackCopy(scammerText));
+            } else {
+                fallbackCopy(scammerText);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('✅ Đã sao chép thông tin kẻ lừa đảo! Bạn có thể dán (Paste) để chia sẻ cảnh báo qua Zalo / Facebook.');
+        }
+
+        btnShare.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Cảnh Báo Lừa Đảo Giả Danh Cán Bộ Đất Đai',
+                    text: 'Thủ đoạn lừa đảo tinh vi: Dẫn nạn nhân từ VNeID sang tài khoản ngân hàng để chiếm đoạt tài sản.',
+                    url: window.location.href
+                }).catch(() => { });
+            } else {
+                copySummaryText();
+            }
+        });
+
+        // Initialize
+        initNav();
+        updateSlideUI();
+    </script>
+</body>
+
+</html>
