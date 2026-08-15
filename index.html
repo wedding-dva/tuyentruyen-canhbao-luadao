@@ -269,9 +269,9 @@
             overflow: hidden;
         }
 
-        /* Dynamic Faint Swipe Hand Gesture Overlay (CHỈ HIỂN THỊ TRÊN MOBILE <= 768px) */
+        /* Dynamic Faint Swipe Hand Gesture Overlay (HIỂN THỊ TRÊN CẢ DESKTOP & MOBILE) */
         .swipe-hint-container {
-            display: none !important;
+            display: none;
             position: absolute;
             top: 50%;
             right: 18%;
@@ -281,6 +281,12 @@
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
             pointer-events: none;
+        }
+
+        .swipe-hint-container.show {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
 
         .swipe-hand-wrapper {
@@ -1123,10 +1129,49 @@
                 padding: 8px 10px;
             }
         }
+
+        /* ==========================================
+           AGENT-STYLE CYAN NEON EDGE GLOW BORDER (VIỀN NEON XANH NỔI BẬT CHUẨN XUẤT SẮC)
+           ========================================== */
+        @keyframes cyanGlowPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 8px rgba(0, 242, 254, 0.8),
+                    0 0 16px rgba(58, 134, 255, 0.6),
+                    inset 0 0 8px rgba(0, 242, 254, 0.4);
+            }
+            50% {
+                box-shadow: 
+                    0 0 14px rgba(0, 242, 254, 1),
+                    0 0 28px rgba(58, 134, 255, 0.8),
+                    inset 0 0 14px rgba(0, 242, 254, 0.6);
+            }
+        }
+
+        .agent-cyan-border {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 99999;
+            box-sizing: border-box;
+            border: 2px solid #00f2fe;
+            border-image: linear-gradient(135deg, #00f2fe, #3a86ff, #00c6ff) 1;
+            box-shadow: 
+                0 0 12px rgba(0, 242, 254, 0.85),
+                0 0 24px rgba(58, 134, 255, 0.6),
+                inset 0 0 10px rgba(0, 242, 254, 0.5);
+            animation: cyanGlowPulse 4s ease-in-out infinite;
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- Agent-Style Cyan Neon Edge Glow Border (Diềm viền xanh neon sáng chuẩn như khi Agent thao tác) -->
+    <div class="agent-cyan-border"></div>
 
     <!-- Top Progress Bar -->
     <div class="progress-bar-container">
@@ -1993,13 +2038,13 @@
             });
         }
 
-        // Inactivity Timer for Swipe Hint Overlay (Tự động đếm 45 giây đứng yên đọc)
+        // Inactivity Timer for Swipe Hint Overlay (Tự động đếm 15 giây đứng yên đọc)
         let swipeHintTimer = null;
         let swipeHintHideTimeout = null;
         const swipeHintEl = document.getElementById('swipeHint');
 
         function triggerSwipeHintAnimation() {
-            if (!swipeHintEl || window.innerWidth > 768) return; // CHỈ CHẠY TRÊN MOBILE (<= 768px)
+            if (!swipeHintEl) return;
             const icon = swipeHintEl.querySelector('.swipe-hand-icon');
             const trail = swipeHintEl.querySelector('.swipe-trail-line');
             if (icon) {
@@ -2022,8 +2067,8 @@
             hideSwipeHint();
             clearTimeout(swipeHintTimer);
             clearTimeout(swipeHintHideTimeout);
-            // Kích hoạt khi đứng yên xem slide đúng 15 giây (CHỈ CHẠY TRÊN MOBILE <= 768px)
-            if (window.innerWidth <= 768 && currentSlideIndex < totalSlides - 1) {
+            // Kích hoạt khi đứng yên xem slide đúng 15 giây (Cả Desktop & Mobile)
+            if (currentSlideIndex < totalSlides - 1) {
                 swipeHintTimer = setTimeout(() => {
                     triggerSwipeHintAnimation();
                 }, 15000);
@@ -2155,6 +2200,89 @@
             touchStartY = 0;
             touchDeltaX = 0;
             isSwipingHorizontal = false;
+        }, { passive: true });
+
+        // Mouse Drag & Scroll Wheel Gesture Navigation cho Desktop
+        let isMouseDown = false;
+        let mouseStartX = 0;
+        let mouseStartY = 0;
+        let mouseDeltaX = 0;
+        let isMouseDragHorizontal = false;
+
+        swipeArea.style.cursor = 'grab';
+
+        swipeArea.addEventListener('mousedown', (e) => {
+            if (e.target.closest('button, a, input, select, textarea, .modal')) return;
+            hideSwipeHint();
+            isMouseDown = true;
+            mouseStartX = e.clientX;
+            mouseStartY = e.clientY;
+            mouseDeltaX = 0;
+            isMouseDragHorizontal = false;
+            swipeArea.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isMouseDown) return;
+            let currentX = e.clientX;
+            let currentY = e.clientY;
+            mouseDeltaX = currentX - mouseStartX;
+            let mouseDeltaY = currentY - mouseStartY;
+
+            if (!isMouseDragHorizontal) {
+                if (Math.abs(mouseDeltaX) > Math.abs(mouseDeltaY) && Math.abs(mouseDeltaX) > 10) {
+                    isMouseDragHorizontal = true;
+                }
+            }
+
+            if (isMouseDragHorizontal) {
+                const activeSlide = slides[currentSlideIndex];
+                if (activeSlide) {
+                    activeSlide.style.transform = `translateX(${mouseDeltaX * 0.35}px) scale(0.98)`;
+                    activeSlide.style.transition = 'none';
+                }
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (!isMouseDown) return;
+            isMouseDown = false;
+            swipeArea.style.cursor = 'grab';
+
+            const activeSlide = slides[currentSlideIndex];
+            if (activeSlide) {
+                activeSlide.style.transform = '';
+                activeSlide.style.transition = '';
+            }
+
+            if (isMouseDragHorizontal) {
+                const dragThreshold = 35;
+                if (mouseDeltaX < -dragThreshold) {
+                    goToNextSlide();
+                } else if (mouseDeltaX > dragThreshold) {
+                    goToPrevSlide();
+                }
+            }
+            mouseStartX = 0;
+            mouseStartY = 0;
+            mouseDeltaX = 0;
+            isMouseDragHorizontal = false;
+        });
+
+        // Hỗ trợ Cuộn Chuột / Trackpad Ngang & Dọc để Chuyển Slide trên Desktop
+        let wheelCooldown = false;
+        swipeArea.addEventListener('wheel', (e) => {
+            if (wheelCooldown) return;
+            if (Math.abs(e.deltaX) > 30 || Math.abs(e.deltaY) > 50) {
+                hideSwipeHint();
+                if (e.deltaX > 30 || e.deltaY > 50) {
+                    goToNextSlide();
+                } else if (e.deltaX < -30 || e.deltaY < -50) {
+                    goToPrevSlide();
+                }
+                wheelCooldown = true;
+                setTimeout(() => { wheelCooldown = false; }, 600);
+            }
         }, { passive: true });
 
         btnOverview.addEventListener('click', () => modalOverview.classList.add('active'));
