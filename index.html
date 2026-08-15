@@ -2276,34 +2276,20 @@
                     currentAudioPlayer.playbackRate = 1.0;
                 }
 
-                currentAudioPlayer.play().then(() => {
-                    currentAudioPlayer.onended = () => {
-                        if (isAudioPlaying) playGoogleTTSChunks(chunks, index + 1, fullTextFallback);
-                    };
-                }).catch(err => {
-                    // Nếu audio phát trực tiếp bị hạn chế, tải qua fetch blob (hoạt động 100% trên HTTPS Cloudflare Server)
-                    fetch(url, { referrerPolicy: 'no-referrer' })
-                        .then(res => {
-                            if (!res.ok) throw new Error('HTTP ' + res.status);
-                            return res.blob();
-                        })
-                        .then(blob => {
-                            if (!isAudioPlaying) return;
-                            let blobUrl = URL.createObjectURL(blob);
-                            currentAudioPlayer = new Audio(blobUrl);
-                            if (currentVoiceGender === 'male') currentAudioPlayer.playbackRate = 0.88;
-                            currentAudioPlayer.play().then(() => {
-                                currentAudioPlayer.onended = () => {
-                                    URL.revokeObjectURL(blobUrl);
-                                    if (isAudioPlaying) playGoogleTTSChunks(chunks, index + 1, fullTextFallback);
-                                };
-                            }).catch(() => nextFallback());
-                        })
-                        .catch(() => nextFallback());
+                currentAudioPlayer.onended = () => {
+                    if (isAudioPlaying) playGoogleTTSChunks(chunks, index + 1, fullTextFallback);
+                };
+
+                currentAudioPlayer.onerror = () => {
+                    nextFallback();
+                };
+
+                currentAudioPlayer.play().catch(err => {
+                    nextFallback();
                 });
             };
 
-            // Thử GTX Direct -> GTX Fetch Blob -> TW-OB -> Web Speech API
+            // Thử GTX Direct -> TW-OB -> Web Speech API (Không dùng fetch() để triệt tiêu lỗi CORS Console)
             playAudioTag(gtxUrl, () => {
                 playAudioTag(twUrl, () => {
                     speakWebSpeechFallback(fullTextFallback);
