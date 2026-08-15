@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuyên Truyền Cảnh Báo Lừa Đảo Giả Danh Cán Bộ Đất Đai & VNeID</title>
+    <title>Tuyên truyền cảnh báo lừa đảo</title>
     <meta name="description"
         content="Cảnh báo chiêu trò lừa đảo tinh vi: Giả danh cán bộ đất đai, dẫn nạn nhân từ VNeID sang chuyển tiền ứng dụng ngân hàng.">
     <!-- Google Fonts: Be Vietnam Pro (Chuẩn phông tiếng Việt số 1) -->
@@ -267,9 +267,9 @@
             overflow: hidden;
         }
 
-        /* Dynamic Faint Swipe Hand Gesture Overlay */
+        /* Dynamic Faint Swipe Hand Gesture Overlay (CHỈ HIỂN THỊ TRÊN MOBILE <= 768px) */
         .swipe-hint-container {
-            display: none;
+            display: none !important;
             position: absolute;
             top: 50%;
             right: 18%;
@@ -279,12 +279,6 @@
             visibility: hidden;
             transition: opacity 0.4s ease, visibility 0.4s ease;
             pointer-events: none;
-        }
-
-        .swipe-hint-container.show {
-            display: flex !important;
-            opacity: 1 !important;
-            visibility: visible !important;
         }
 
         .swipe-hand-wrapper {
@@ -1021,8 +1015,10 @@
                 line-height: 1.3;
             }
 
-            .swipe-hint-container {
+            .swipe-hint-container.show {
                 display: flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             }
 
             .slide-subtitle {
@@ -1994,7 +1990,7 @@
         const swipeHintEl = document.getElementById('swipeHint');
 
         function triggerSwipeHintAnimation() {
-            if (!swipeHintEl) return;
+            if (!swipeHintEl || window.innerWidth > 768) return; // CHỈ CHẠY TRÊN MOBILE (<= 768px)
             const icon = swipeHintEl.querySelector('.swipe-hand-icon');
             const trail = swipeHintEl.querySelector('.swipe-trail-line');
             if (icon) {
@@ -2017,8 +2013,8 @@
             hideSwipeHint();
             clearTimeout(swipeHintTimer);
             clearTimeout(swipeHintHideTimeout);
-            // Kích hoạt khi đứng yên xem slide đúng 15 giây
-            if (currentSlideIndex < totalSlides - 1) {
+            // Kích hoạt khi đứng yên xem slide đúng 15 giây (CHỈ CHẠY TRÊN MOBILE <= 768px)
+            if (window.innerWidth <= 768 && currentSlideIndex < totalSlides - 1) {
                 swipeHintTimer = setTimeout(() => {
                     triggerSwipeHintAnimation();
                 }, 15000);
@@ -2044,7 +2040,7 @@
             progressBarEl.style.width = `${progressPct}%`;
 
             // Dynamic Browser Tab Title Update
-            document.title = `[Slide ${String(currentSlideIndex + 1).padStart(2, '0')}/${totalSlides}] ${slideTitles[currentSlideIndex] || 'Cảnh Báo Lừa Đảo VNeID'}`;
+            document.title = `Tuyên truyền cảnh báo lừa đảo - [${String(currentSlideIndex + 1).padStart(2, '0')}/${totalSlides}] ${slideTitles[currentSlideIndex] || ''}`;
 
             const dots = dotsContainerEl.querySelectorAll('.dot');
             dots.forEach((dot, index) => {
@@ -2164,24 +2160,65 @@
         // Text-to-Speech Dual Engine (Google Native Voice + Web Speech Fallback)
         let currentAudioPlayer = null;
         let vietnameseVoice = null;
+        let currentVoiceGender = 'male'; // Mặc định Giọng Nam dõng dạc trang trọng
 
-        function detectVietnameseVoice() {
+        function toggleVoiceGender() {
+            currentVoiceGender = currentVoiceGender === 'male' ? 'female' : 'male';
+            const genderIcon = document.getElementById('genderIcon');
+            const genderText = document.getElementById('genderText');
+            if (currentVoiceGender === 'male') {
+                if (genderIcon) {
+                    genderIcon.className = 'fa-solid fa-mars';
+                    genderIcon.style.color = 'var(--accent-orange)';
+                }
+                if (genderText) genderText.textContent = 'Giọng Nam';
+            } else {
+                if (genderIcon) {
+                    genderIcon.className = 'fa-solid fa-venus';
+                    genderIcon.style.color = 'var(--accent-red)';
+                }
+                if (genderText) genderText.textContent = 'Giọng Nữ';
+            }
+            if (isAudioPlaying) {
+                speakCurrentSlide();
+            }
+        }
+
+        function detectVietnameseVoice(gender = currentVoiceGender) {
             if (!('speechSynthesis' in window)) return null;
             const voices = synth.getVoices();
-            return voices.find(v =>
+            const viVoices = voices.filter(v =>
                 v.lang === 'vi-VN' ||
                 v.lang === 'vi_VN' ||
                 v.lang.startsWith('vi') ||
-                v.name.toLowerCase().includes('vietnamese') ||
-                v.name.toLowerCase().includes('tiếng việt') ||
-                v.name.toLowerCase().includes('hoaimy') ||
-                v.name.toLowerCase().includes('namminh')
+                v.name.toLowerCase().includes('vietnam') ||
+                v.name.toLowerCase().includes('tiếng việt')
             );
+            if (viVoices.length === 0) return null;
+
+            if (gender === 'male') {
+                let maleVoice = viVoices.find(v =>
+                    v.name.toLowerCase().includes('nam') ||
+                    v.name.toLowerCase().includes('male') ||
+                    v.name.toLowerCase().includes('minh') ||
+                    v.name.toLowerCase().includes('an')
+                );
+                return maleVoice || viVoices[0];
+            } else {
+                let femaleVoice = viVoices.find(v =>
+                    v.name.toLowerCase().includes('nữ') ||
+                    v.name.toLowerCase().includes('female') ||
+                    v.name.toLowerCase().includes('my') ||
+                    v.name.toLowerCase().includes('hoaimy') ||
+                    v.name.toLowerCase().includes('linh')
+                );
+                return femaleVoice || viVoices[0];
+            }
         }
 
         if ('speechSynthesis' in window && speechSynthesis.onvoiceschanged !== undefined) {
             speechSynthesis.onvoiceschanged = () => {
-                vietnameseVoice = detectVietnameseVoice();
+                vietnameseVoice = detectVietnameseVoice(currentVoiceGender);
             };
         }
 
@@ -2223,17 +2260,37 @@
             }
 
             let chunk = chunks[index];
-            let googleUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodeURIComponent(chunk)}`;
+            // Engine 1: Google GTX Endpoint
+            let gtxUrl = `https://translate.googleapis.com/translate_tts?client=gtx&sl=vi&tl=vi&dt=t&q=${encodeURIComponent(chunk)}`;
+            // Engine 2: Google TW-OB Fallback Endpoint
+            let twUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encodeURIComponent(chunk)}`;
 
-            currentAudioPlayer = new Audio(googleUrl);
+            let playAudioTag = (url, nextFallback) => {
+                currentAudioPlayer = new Audio();
+                currentAudioPlayer.referrerPolicy = 'no-referrer';
+                currentAudioPlayer.src = url;
 
-            currentAudioPlayer.play().then(() => {
-                currentAudioPlayer.onended = () => {
-                    if (isAudioPlaying) playGoogleTTSChunks(chunks, index + 1, fullTextFallback);
-                };
-            }).catch(err => {
-                console.warn('Không thể kết nối giọng online, dùng Web Speech API:', err);
-                speakWebSpeechFallback(fullTextFallback);
+                if (currentVoiceGender === 'male') {
+                    currentAudioPlayer.playbackRate = 0.88; // Tốc độ dõng dạc giọng Nam
+                } else {
+                    currentAudioPlayer.playbackRate = 1.0;
+                }
+
+                currentAudioPlayer.play().then(() => {
+                    currentAudioPlayer.onended = () => {
+                        if (isAudioPlaying) playGoogleTTSChunks(chunks, index + 1, fullTextFallback);
+                    };
+                }).catch(err => {
+                    console.warn('Audio play error, trying fallback:', err);
+                    nextFallback();
+                });
+            };
+
+            // Thử Endpoint 1 (GTX) -> Endpoint 2 (TW-OB) -> Web Speech API Tiếng Việt
+            playAudioTag(gtxUrl, () => {
+                playAudioTag(twUrl, () => {
+                    speakWebSpeechFallback(fullTextFallback);
+                });
             });
         }
 
@@ -2241,18 +2298,27 @@
             if (!('speechSynthesis' in window)) return;
             synth.cancel();
 
-            let foundVoice = detectVietnameseVoice();
+            let foundVoice = detectVietnameseVoice(currentVoiceGender);
+
+            // CHỈ PHÁT NẾU THỰC SỰ CÓ GIỌNG TIẾNG VIỆT TRÊN HỆ THỐNG.
+            if (!foundVoice) {
+                console.warn('Thiết bị chưa cài gói giọng đọc Tiếng Việt (vi-VN)');
+                stopAudio();
+                return;
+            }
 
             speechUtterance = new SpeechSynthesisUtterance(text);
             speechUtterance.lang = 'vi-VN';
+            speechUtterance.voice = foundVoice;
 
-            if (foundVoice) {
-                speechUtterance.voice = foundVoice;
+            if (currentVoiceGender === 'male') {
+                speechUtterance.pitch = 0.78; // Giọng Nam trầm dõng dạc
+                speechUtterance.rate = 0.86;
             } else {
-                console.warn('Lưu ý: Máy chưa cài gói Microsoft HoaiMy (Tiếng Việt). Giọng mặc định sẽ được phát.');
+                speechUtterance.pitch = 1.0;
+                speechUtterance.rate = 0.92;
             }
 
-            speechUtterance.rate = 0.9;
             speechUtterance.onended = () => stopAudio();
             speechUtterance.onerror = () => stopAudio();
 
@@ -2268,11 +2334,14 @@
             const activeSlide = slides[currentSlideIndex];
 
             let clone = activeSlide.cloneNode(true);
-            clone.querySelectorAll('button, .keyboard-hint, .slide-badge').forEach(el => el.remove());
+            // Loại bỏ nút bấm, thẻ thông tin ẩn, và các thẻ icon gây ra dòng trống ở đầu
+            clone.querySelectorAll('button, .keyboard-hint, .slide-badge, i, svg').forEach(el => el.remove());
 
             let rawText = clone.innerText
-                .replace(/\n+/g, '. ')
+                .replace(/\r\n|\r|\n/g, '. ')
                 .replace(/\s+/g, ' ')
+                .replace(/\.\s*\./g, '.')
+                .replace(/^[.\s,;:!?-]+/, '') // Loại bỏ triệt để dấu chấm '.' hoặc ký tự đặc biệt ở ĐẦU chuỗi
                 .trim();
 
             let chunks = splitTextIntoChunks(rawText, 140);
