@@ -29,10 +29,10 @@
             --accent-yellow: #ffd166;
             --accent-blue: #3a86ff;
             --accent-green: #06d6a0;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --text-dim: #64748b;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --text-dim: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.15);
             --radius-lg: 20px;
             --radius-md: 14px;
             --radius-sm: 8px;
@@ -418,10 +418,23 @@
             margin-bottom: 12px;
         }
 
+        /* Police Emergency Badge Pulse */
+        @keyframes policeBadgePulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 59, 92, 0.35);
+                border-color: rgba(255, 59, 92, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 16px rgba(58, 134, 255, 0.5);
+                border-color: rgba(58, 134, 255, 0.7);
+            }
+        }
+
         .badge-danger {
             background: rgba(255, 59, 92, 0.15);
             color: var(--accent-red);
             border: 1px solid rgba(255, 59, 92, 0.3);
+            animation: policeBadgePulse 3s infinite ease-in-out;
         }
 
         .badge-warning {
@@ -442,21 +455,72 @@
             border: 1px solid rgba(6, 214, 160, 0.3);
         }
 
+        /* Staggered Entrance Animations on Slide Active */
+        @keyframes slideItemEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .slide.active .slide-badge {
+            animation: slideItemEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+        }
+
+        .slide.active .slide-title {
+            animation: slideItemEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        }
+
+        .slide.active .slide-subtitle {
+            animation: slideItemEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+        }
+
+        .slide.active .content-grid > :nth-child(1),
+        .slide.active .flow-container > :nth-child(1),
+        .slide.active .slide1-highlights > :nth-child(1) {
+            animation: slideItemEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+        }
+
+        .slide.active .content-grid > :nth-child(2),
+        .slide.active .flow-container > :nth-child(2),
+        .slide.active .slide1-highlights > :nth-child(2) {
+            animation: slideItemEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both;
+        }
+
+        .slide.active .content-grid > :nth-child(3),
+        .slide.active .flow-container > :nth-child(3),
+        .slide.active .slide1-highlights > :nth-child(3),
+        .slide.active .content-grid > :nth-child(4),
+        .slide.active .content-grid > :nth-child(5),
+        .slide.active .content-grid > :nth-child(6) {
+            animation: slideItemEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+        }
+
+        .slide.active .alert-box,
+        .slide.active .btn-start {
+            animation: slideItemEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+        }
+
         .slide-title {
             font-size: 1.85rem;
             font-weight: 800;
             line-height: 1.3;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #ffffff 40%, var(--text-muted));
+            background: linear-gradient(135deg, #ffffff 65%, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .slide-subtitle {
-            font-size: 0.98rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+            font-size: 1.02rem;
+            color: #e2e8f0;
+            line-height: 1.55;
             margin-bottom: 18px;
+            font-weight: 500;
         }
 
         /* Cover Slide Special Layout */
@@ -565,7 +629,7 @@
         }
 
         .info-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             padding: 18px;
@@ -577,7 +641,7 @@
 
         .info-card:hover {
             background: var(--bg-card-hover);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
             transform: translateY(-3px);
         }
 
@@ -594,13 +658,13 @@
         .card-title {
             font-size: 1.05rem;
             font-weight: 700;
-            color: var(--text-main);
+            color: #ffffff;
         }
 
         .card-desc {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+            font-size: 0.94rem;
+            color: #cbd5e1;
+            line-height: 1.55;
         }
 
         /* Key Highlight Boxes */
@@ -614,15 +678,15 @@
         }
 
         .alert-box.danger {
-            background: rgba(255, 59, 92, 0.1);
-            border: 1px solid rgba(255, 59, 92, 0.3);
-            color: #ff859b;
+            background: rgba(255, 59, 92, 0.15);
+            border: 1px solid rgba(255, 59, 92, 0.4);
+            color: #ffb3c1;
         }
 
         .alert-box.warning {
-            background: rgba(255, 159, 28, 0.1);
-            border: 1px solid rgba(255, 159, 28, 0.3);
-            color: #ffc97a;
+            background: rgba(255, 159, 28, 0.15);
+            border: 1px solid rgba(255, 159, 28, 0.4);
+            color: #ffe0b2;
         }
 
         .alert-icon {
@@ -631,15 +695,16 @@
         }
 
         .alert-content h4 {
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 1.02rem;
+            font-weight: 800;
             margin-bottom: 4px;
-            color: var(--text-main);
+            color: #ffffff;
         }
 
         .alert-content p {
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: #f8fafc;
         }
 
         /* Step Diagrams */
@@ -654,7 +719,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-color);
             padding: 14px 18px;
             border-radius: var(--radius-md);
@@ -664,7 +729,7 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -677,13 +742,14 @@
         .step-text h5 {
             font-size: 1rem;
             font-weight: 700;
-            color: var(--text-main);
+            color: #ffffff;
             margin-bottom: 4px;
         }
 
         .step-text p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            line-height: 1.5;
         }
 
         /* Bullet List styling */
@@ -788,15 +854,175 @@
             box-shadow: 0 10px 25px var(--accent-red-glow);
             transition: var(--transition);
             margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-start::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 45px;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.45) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(25deg);
+            animation: btnShimmerBeam 3.2s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes btnShimmerBeam {
+            0% {
+                left: -60%;
+            }
+            25%, 100% {
+                left: 140%;
+            }
         }
 
         .btn-start span {
             display: inline-block !important;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-start i {
+            position: relative;
+            z-index: 2;
         }
 
         .btn-start:hover {
             transform: translateY(-2px) scale(1.03);
             box-shadow: 0 15px 35px var(--accent-red-glow);
+        }
+
+        /* Animated Audio Soundwave Bars */
+        .soundwave-bars {
+            display: inline-flex;
+            align-items: center;
+            gap: 2.5px;
+            height: 12px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .soundwave-bars span {
+            display: inline-block;
+            width: 2.5px;
+            background: #00f2fe;
+            border-radius: 2px;
+            animation: waveBounce 0.8s infinite ease-in-out alternate;
+        }
+
+        .soundwave-bars span:nth-child(1) {
+            height: 4px;
+            animation-delay: 0.1s;
+        }
+
+        .soundwave-bars span:nth-child(2) {
+            height: 12px;
+            animation-delay: 0.25s;
+        }
+
+        .soundwave-bars span:nth-child(3) {
+            height: 7px;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes waveBounce {
+            0% {
+                height: 3px;
+            }
+            100% {
+                height: 12px;
+            }
+        }
+
+        /* Pulsing Evidence Zoom Tag */
+        @keyframes pulseZoomTag {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+            }
+            50% {
+                transform: scale(1.06);
+                box-shadow: 0 4px 22px rgba(0, 242, 254, 0.85);
+            }
+        }
+
+        .evidence-zoom-tag {
+            animation: pulseZoomTag 2.2s infinite ease-in-out;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .evidence-zoom-tag:hover {
+            transform: scale(1.1);
+        }
+
+        /* Floating Mobile Swipe Guide Pill */
+        .mobile-swipe-pill {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-swipe-pill {
+                display: flex;
+                position: fixed;
+                bottom: 66px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(19, 27, 46, 0.92);
+                border: 1.5px solid rgba(0, 242, 254, 0.5);
+                padding: 6px 14px;
+                border-radius: 20px;
+                font-size: 0.76rem;
+                font-weight: 700;
+                color: #00f2fe;
+                align-items: center;
+                gap: 8px;
+                z-index: 120;
+                box-shadow: 0 4px 18px rgba(0, 242, 254, 0.35);
+                backdrop-filter: blur(10px);
+                pointer-events: none;
+                transition: opacity 0.4s ease, transform 0.4s ease;
+                animation: pillPulse 2s infinite ease-in-out;
+            }
+
+            .mobile-swipe-pill.hidden {
+                opacity: 0 !important;
+                transform: translateX(-50%) translateY(10px) !important;
+                pointer-events: none;
+            }
+
+            .swipe-pill-hand {
+                animation: pillHandSwipe 1.5s infinite ease-in-out;
+            }
+
+            @keyframes pillPulse {
+                0%, 100% {
+                    box-shadow: 0 4px 16px rgba(0, 242, 254, 0.3);
+                    border-color: rgba(0, 242, 254, 0.5);
+                }
+                50% {
+                    box-shadow: 0 4px 22px rgba(0, 242, 254, 0.85);
+                    border-color: rgba(0, 242, 254, 0.9);
+                }
+            }
+
+            @keyframes pillHandSwipe {
+                0%, 100% {
+                    transform: translateX(0);
+                }
+                50% {
+                    transform: translateX(-5px);
+                }
+            }
         }
 
         /* Dots Navigation */
@@ -1217,6 +1443,13 @@
             </div>
         </div>
 
+        <!-- Floating Mobile Swipe Guide Pill -->
+        <div class="mobile-swipe-pill" id="mobileSwipePill">
+            <i class="fa-solid fa-hand-pointer swipe-pill-hand"></i>
+            <span>Vuốt để xem tiếp</span>
+            <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
         <div class="slides-wrapper">
 
             <!-- SLIDE 1: COVER -->
@@ -1248,7 +1481,7 @@
                         </div>
                     </div>
                     <button class="btn-start" onclick="goToNextSlide()">
-                        <span>BẮT ĐẦU XEM BÀI HỌC</span>
+                        <span>VẠCH TRẦN CHIÊU TRÒ NGAY</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -1433,9 +1666,9 @@
                             onclick="openImageZoomModal('./assets/zalo_chat_lua_dao.jpg', 'Bằng chứng thực tế tin nhắn Zalo lừa đảo từ số giả danh cán bộ')">
                             <img src="./assets/zalo_chat_lua_dao.jpg" alt="Bằng chứng tin nhắn Zalo lừa đảo gửi Mã QR"
                                 style="max-width: 100%; max-height: 260px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); object-fit: contain; box-shadow: 0 8px 20px rgba(0,0,0,0.5);" />
-                            <div
-                                style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); color: #fff; padding: 5px 11px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; backdrop-filter: blur(4px);">
-                                <i class="fa-solid fa-magnifying-glass-plus"></i> Bấm để phóng to
+                            <div class="evidence-zoom-tag"
+                                style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.82); color: #00f2fe; padding: 6px 12px; border-radius: 20px; font-size: 0.76rem; font-weight: 800; backdrop-filter: blur(6px); border: 1px solid rgba(0,242,254,0.5);">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> Chạm để phóng to
                             </div>
                         </div>
                     </div>
@@ -1485,9 +1718,9 @@
                             onclick="openImageZoomModal('./assets/qr_lua_dao_tnmt.jpg', 'Mẫu Mã QR Lừa Đảo: TÀI NGUYÊN VÀ MÔI TRƯỜNG - MÃ LIÊN KẾT KHO BẠC NHÀ NƯỚC')">
                             <img src="./assets/qr_lua_dao_tnmt.jpg" alt="Mẫu mã QR lừa đảo Tài nguyên và Môi trường"
                                 style="max-width: 100%; max-height: 250px; border-radius: 10px; border: 2px solid var(--accent-green); object-fit: contain; box-shadow: 0 6px 16px rgba(0,0,0,0.6);" />
-                            <div
-                                style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); color: #fff; padding: 5px 11px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; backdrop-filter: blur(4px);">
-                                <i class="fa-solid fa-magnifying-glass-plus"></i> Bấm để phóng to
+                            <div class="evidence-zoom-tag"
+                                style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.82); color: #00f2fe; padding: 6px 12px; border-radius: 20px; font-size: 0.76rem; font-weight: 800; backdrop-filter: blur(6px); border: 1px solid rgba(0,242,254,0.5);">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> Chạm để phóng to
                             </div>
                         </div>
                         <div
@@ -1601,9 +1834,9 @@
                             <img src="./assets/poster_cong_an.jpg"
                                 alt="Poster Tuyên truyền Cảnh báo Lừa đảo của Công an"
                                 style="max-width: 100%; max-height: 310px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); object-fit: contain; box-shadow: 0 8px 20px rgba(0,0,0,0.6);" />
-                            <div
-                                style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.75); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; backdrop-filter: blur(4px);">
-                                <i class="fa-solid fa-magnifying-glass-plus"></i> Bấm để phóng to
+                            <div class="evidence-zoom-tag"
+                                style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.82); color: #06d6a0; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; backdrop-filter: blur(6px); border: 1px solid rgba(6,214,160,0.5);">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> Chạm xem toàn màn hình
                             </div>
                         </div>
                     </div>
@@ -2039,8 +2272,10 @@
         }
 
         // Inactivity Timer for Swipe Hint Overlay (Tự động đếm 15 giây đứng yên đọc)
+        // Inactivity Timer for Swipe Hint Overlay (Chu kỳ nhắc nhở thông minh)
         let swipeHintTimer = null;
         let swipeHintHideTimeout = null;
+        let swipeHintRepeatTimeout = null;
         const swipeHintEl = document.getElementById('swipeHint');
 
         function triggerSwipeHintAnimation() {
@@ -2050,28 +2285,35 @@
             if (icon) {
                 icon.style.animation = 'none';
                 void icon.offsetWidth;
-                icon.style.animation = 'faint-swipe-motion 2.2s 3 cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                icon.style.animation = 'faint-swipe-motion 2.2s 2 cubic-bezier(0.4, 0, 0.2, 1) forwards';
             }
             if (trail) {
                 trail.style.animation = 'none';
                 void trail.offsetWidth;
-                trail.style.animation = 'long-trail-motion 2.2s 3 cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                trail.style.animation = 'long-trail-motion 2.2s 2 cubic-bezier(0.4, 0, 0.2, 1) forwards';
             }
             swipeHintEl.classList.add('show');
             swipeHintHideTimeout = setTimeout(() => {
                 hideSwipeHint();
-            }, 7000);
+                // Chu kỳ nhắc lại: Nghỉ 8 giây, nếu người dùng vẫn chưa chuyển slide thì nhắc nhẹ lại
+                if (currentSlideIndex < totalSlides - 1) {
+                    swipeHintRepeatTimeout = setTimeout(() => {
+                        triggerSwipeHintAnimation();
+                    }, 8000);
+                }
+            }, 4500);
         }
 
         function resetSwipeHintTimer() {
             hideSwipeHint();
             clearTimeout(swipeHintTimer);
             clearTimeout(swipeHintHideTimeout);
-            // Kích hoạt khi đứng yên xem slide đúng 15 giây (Cả Desktop & Mobile)
+            clearTimeout(swipeHintRepeatTimeout);
+            // Kích hoạt lần đầu sau 5 giây đứng yên
             if (currentSlideIndex < totalSlides - 1) {
                 swipeHintTimer = setTimeout(() => {
                     triggerSwipeHintAnimation();
-                }, 15000);
+                }, 5000);
             }
         }
 
@@ -2103,6 +2345,15 @@
 
             btnPrev.disabled = currentSlideIndex === 0;
             btnNext.disabled = currentSlideIndex === totalSlides - 1;
+
+            const mobileSwipePill = document.getElementById('mobileSwipePill');
+            if (mobileSwipePill) {
+                if (currentSlideIndex === 0) {
+                    mobileSwipePill.classList.remove('hidden');
+                } else {
+                    mobileSwipePill.classList.add('hidden');
+                }
+            }
 
             resetSwipeHintTimer();
 
@@ -2294,110 +2545,53 @@
             modalOverview.classList.remove('active');
         }
 
-        // Text-to-Speech Dual Engine (Google Native Voice + Web Speech Fallback)
+        // ==========================================
+        // TEXT-TO-SPEECH ENGINE (ƯU TIÊN WEB SPEECH API TRÊN CLOUDFLARE PAGES & MOBILE)
+        // ==========================================
         let currentAudioPlayer = null;
-        let vietnameseVoice = null;
-        let currentVoiceGender = 'male'; // Mặc định Giọng Nam dõng dạc trang trọng
 
-        function toggleVoiceGender() {
-            currentVoiceGender = currentVoiceGender === 'male' ? 'female' : 'male';
-            const genderIcon = document.getElementById('genderIcon');
-            const genderText = document.getElementById('genderText');
-            if (currentVoiceGender === 'male') {
-                if (genderIcon) {
-                    genderIcon.className = 'fa-solid fa-mars';
-                    genderIcon.style.color = 'var(--accent-orange)';
-                }
-                if (genderText) genderText.textContent = 'Giọng Nam';
-            } else {
-                if (genderIcon) {
-                    genderIcon.className = 'fa-solid fa-venus';
-                    genderIcon.style.color = 'var(--accent-red)';
-                }
-                if (genderText) genderText.textContent = 'Giọng Nữ';
-            }
-            if (isAudioPlaying) {
-                speakCurrentSlide();
-            }
-        }
-
-        function detectVietnameseVoice(gender) {
+        function getVietnameseVoice() {
             if (!('speechSynthesis' in window)) return null;
-            let voices = synth.getVoices();
+            const voices = window.speechSynthesis.getVoices() || [];
+            if (!voices.length) return null;
 
-            // Lọc chính xác các tệp giọng đọc Tiếng Việt thực sự trên máy
-            let viVoices = voices.filter(v =>
-                v.lang.toLowerCase().startsWith('vi') ||
-                v.lang.toLowerCase().includes('vi-vn') ||
-                v.lang.toLowerCase().includes('vi_vn') ||
-                v.name.toLowerCase().includes('vietnam') ||
-                v.name.toLowerCase().includes('tiếng việt') ||
-                v.name.toLowerCase().includes('hoaimy') ||
-                v.name.toLowerCase().includes('namminh') ||
-                v.name.toLowerCase().includes('linh') ||
-                v.name.toLowerCase().includes('an')
-            );
-
-            if (viVoices.length === 0) return null;
-
-            if (gender === 'male') {
-                let maleVoice = viVoices.find(v =>
-                    v.name.toLowerCase().includes('nam') ||
-                    v.name.toLowerCase().includes('male') ||
-                    v.name.toLowerCase().includes('minh') ||
-                    v.name.toLowerCase().includes('an')
-                );
-                return maleVoice || viVoices[0];
-            } else {
-                let femaleVoice = viVoices.find(v =>
-                    v.name.toLowerCase().includes('nữ') ||
-                    v.name.toLowerCase().includes('female') ||
-                    v.name.toLowerCase().includes('my') ||
-                    v.name.toLowerCase().includes('hoaimy') ||
-                    v.name.toLowerCase().includes('linh')
-                );
-                return femaleVoice || viVoices[0];
-            }
-        }
-
-        if ('speechSynthesis' in window && speechSynthesis.onvoiceschanged !== undefined) {
-            speechSynthesis.onvoiceschanged = () => {
-                vietnameseVoice = detectVietnameseVoice(currentVoiceGender);
-            };
-        }
-
-        function detectVietnameseVoice() {
-            if (!('speechSynthesis' in window)) return null;
-            let voices = synth.getVoices();
-            if (!voices || voices.length === 0) return null;
-
-            let viVoice = voices.find(v => {
-                let l = (v.lang || '').toLowerCase();
-                let n = (v.name || '').toLowerCase();
+            return voices.find(v => {
+                const lang = (v.lang || '').toLowerCase();
+                const name = (v.name || '').toLowerCase();
                 return (
-                    l.startsWith('vi') ||
-                    l.includes('vi-vn') ||
-                    l.includes('vi_vn') ||
-                    n.includes('vietnam') ||
-                    n.includes('viet nam') ||
-                    n.includes('tiếng việt') ||
-                    n.includes('hoaimy') ||
-                    n.includes('namminh')
+                    lang.startsWith('vi') ||
+                    lang.includes('vi-vn') ||
+                    lang.includes('vi_vn') ||
+                    name.includes('vietnam') ||
+                    name.includes('tiếng việt') ||
+                    name.includes('hoaimy') ||
+                    name.includes('namminh') ||
+                    name.includes('linh')
                 );
-            });
-            return viVoice || null;
+            }) || null;
+        }
+
+        if ('speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
+            window.speechSynthesis.onvoiceschanged = () => {
+                getVietnameseVoice();
+            };
         }
 
         function stopAudio() {
             isAudioPlaying = false;
             audioText.textContent = 'Đọc slide';
+            const soundwave = btnAudioToggle.querySelector('.soundwave-bars');
+            if (soundwave) {
+                soundwave.outerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            }
             btnAudioToggle.style.color = '';
             if (currentAudioPlayer) {
                 currentAudioPlayer.pause();
+                currentAudioPlayer.src = '';
                 currentAudioPlayer = null;
             }
             if ('speechSynthesis' in window) {
-                synth.cancel();
+                window.speechSynthesis.cancel();
             }
         }
 
@@ -2418,98 +2612,121 @@
             return chunks;
         }
 
-        function playGoogleTTSChunks(chunks, index, fullTextFallback) {
+        function playOnlineTTSFallback(chunks, index) {
             if (!isAudioPlaying) return;
             if (index >= chunks.length) {
                 stopAudio();
                 return;
             }
 
-            let chunk = chunks[index];
-            let encoded = encodeURIComponent(chunk);
+            const chunk = chunks[index];
+            const encoded = encodeURIComponent(chunk);
 
-            // 3 Endpoints Google Translate TTS Tiếng Việt chuẩn 100%
-            let urls = [
-                `https://translate.googleapis.com/translate_tts?client=gtx&sl=vi&tl=vi&dt=t&q=${encoded}`,
+            const isHosted = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+
+            const fallbackUrls = isHosted ? [
+                `/api/tts?q=${encoded}`, // Ưu tiên Cloudflare Pages Function khi chạy trên Web Server (Triệt tiêu CORS)
                 `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`,
-                `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=dict-chrome-ex&q=${encoded}`
+                `https://dict.youdao.com/dictvoice?audio=${encoded}&le=vi`,
+                `https://translate.googleapis.com/translate_tts?client=gtx&sl=vi&tl=vi&dt=t&q=${encoded}`
+            ] : [
+                `https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q=${encoded}`, // Ưu tiên phát trực tiếp khi mở file:/// cục bộ
+                `https://translate.googleapis.com/translate_tts?client=gtx&sl=vi&tl=vi&dt=t&q=${encoded}`,
+                `https://dict.youdao.com/dictvoice?audio=${encoded}&le=vi`
             ];
 
-            let tryPlayIndex = (urlIdx) => {
-                if (urlIdx >= urls.length) {
+            let tryUrl = (idx) => {
+                if (idx >= fallbackUrls.length) {
                     stopAudio();
                     return;
                 }
 
                 currentAudioPlayer = new Audio();
-                currentAudioPlayer.referrerPolicy = 'no-referrer';
-                currentAudioPlayer.src = urls[urlIdx];
+                if (isHosted) {
+                    currentAudioPlayer.crossOrigin = 'anonymous';
+                }
+                currentAudioPlayer.src = fallbackUrls[idx];
 
                 currentAudioPlayer.onended = () => {
-                    if (isAudioPlaying) playGoogleTTSChunks(chunks, index + 1, fullTextFallback);
+                    if (isAudioPlaying) playOnlineTTSFallback(chunks, index + 1);
                 };
 
                 currentAudioPlayer.onerror = () => {
-                    tryPlayIndex(urlIdx + 1);
+                    tryUrl(idx + 1);
                 };
 
                 currentAudioPlayer.play().catch(() => {
-                    tryPlayIndex(urlIdx + 1);
+                    tryUrl(idx + 1);
                 });
             };
 
-            tryPlayIndex(0);
+            tryUrl(0);
         }
 
         function speakCurrentSlide() {
             stopAudio();
             isAudioPlaying = true;
             audioText.textContent = 'Đang đọc...';
-            btnAudioToggle.style.color = 'var(--accent-red)';
+            const audioIcon = btnAudioToggle.querySelector('i');
+            if (audioIcon) {
+                audioIcon.outerHTML = '<div class="soundwave-bars"><span></span><span></span><span></span></div>';
+            }
+            btnAudioToggle.style.color = '#00f2fe';
 
             const activeSlide = slides[currentSlideIndex];
+            if (!activeSlide) return;
 
             let clone = activeSlide.cloneNode(true);
-            // Loại bỏ nút bấm, thẻ thông tin ẩn, và các thẻ icon gây ra dòng trống ở đầu
-            clone.querySelectorAll('button, .keyboard-hint, .slide-badge, i, svg').forEach(el => el.remove());
+            clone.querySelectorAll('button, .keyboard-hint, .slide-badge, i, svg, .dots-container').forEach(el => el.remove());
 
             let rawText = clone.innerText
                 .replace(/\r\n|\r|\n/g, '. ')
                 .replace(/\s+/g, ' ')
                 .replace(/\.\s*\./g, '.')
-                .replace(/^[.\s,;:!?-]+/, '') // Loại bỏ triệt để dấu chấm '.' hoặc ký tự đặc biệt ở ĐẦU chuỗi
+                .replace(/^[.\s,;:!?-]+/, '')
                 .trim();
 
-            let chunks = splitTextIntoChunks(rawText, 140);
+            if (!rawText) {
+                stopAudio();
+                return;
+            }
 
-            // 1. Luồng 1: WebSpeech API (CHỈ PHÁT NẾU MÁY CÓ GIỌNG TIẾNG VIỆT THỰC SỰ CHUẨN)
-            let nativeViVoice = detectVietnameseVoice();
-            if (nativeViVoice && 'speechSynthesis' in window) {
-                synth.cancel();
+            // 1. Luồng 1: WebSpeech API (CHỈ PHÁT NẾU MÁY CÓ SẴN ENGINE TIẾNG VIỆT THỰC SỰ)
+            const viVoice = getVietnameseVoice();
+            if (viVoice && 'speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
 
                 speechUtterance = new SpeechSynthesisUtterance(rawText);
-                speechUtterance.lang = nativeViVoice.lang || 'vi-VN';
-                speechUtterance.voice = nativeViVoice;
-                speechUtterance.rate = 0.90;
+                speechUtterance.lang = viVoice.lang || 'vi-VN';
+                speechUtterance.voice = viVoice;
+                speechUtterance.rate = 0.92;
                 speechUtterance.pitch = 1.0;
 
                 speechUtterance.onstart = () => {
                     isAudioPlaying = true;
                     audioText.textContent = 'Đang đọc...';
-                    btnAudioToggle.style.color = 'var(--accent-red)';
+                    const icon = btnAudioToggle.querySelector('i');
+                    if (icon) {
+                        icon.outerHTML = '<div class="soundwave-bars"><span></span><span></span><span></span></div>';
+                    }
+                    btnAudioToggle.style.color = '#00f2fe';
                 };
 
                 speechUtterance.onended = () => stopAudio();
-                speechUtterance.onerror = () => {
-                    playGoogleTTSChunks(chunks, 0, rawText);
+                speechUtterance.onerror = (err) => {
+                    console.warn('SpeechSynthesis error, falling back to online audio:', err);
+                    let chunks = splitTextIntoChunks(rawText, 140);
+                    playOnlineTTSFallback(chunks, 0);
                 };
 
-                synth.speak(speechUtterance);
+                window.speechSynthesis.speak(speechUtterance);
                 return;
             }
 
-            // 2. Luồng 2: MÁY KHÔNG CÓ GIỌNG TIẾNG VIỆT NATIVE -> PHÁT ONLINE GOOGLE TTS TIẾNG VIỆT CHUẨN 100% (TRIỆT TIÊU 100% GIỌNG ANH NGỌNG)
-            playGoogleTTSChunks(chunks, 0, rawText);
+            // 2. Luồng 2: MÁY KHÔNG CÓ GIỌNG TIẾNG VIỆT (VÍ DỤ WINDOWS MẶC ĐỊNH CHỈ CÓ GIỌNG ANH)
+            // -> PHÁT ONLINE GOOGLE TTS TIẾNG VIỆT CHUẨN 100% (TRIỆT TIÊU HOÀN TOÀN TÌNH TRẠNG ĐỌC NGỌNG)
+            let chunks = splitTextIntoChunks(rawText, 140);
+            playOnlineTTSFallback(chunks, 0);
         }
 
         btnAudioToggle.addEventListener('click', () => {
